@@ -528,6 +528,7 @@
 				3C31F8AC1B97888C003B6345 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3C31F8AD1B97888C003B6345 /* Build configuration list for PBXNativeTarget "RoadTableAppTests" */ = {
 			isa = XCConfigurationList;
@@ -536,6 +537,7 @@
 				3C31F8AF1B97888C003B6345 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -17,6 +17,9 @@
 		3C31F8C61B979009003B6345 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C31F8BE1B978FCE003B6345 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3C31F8CB1B979053003B6345 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C31F8CA1B979053003B6345 /* SwiftyJSON.swift */; };
 		3C31F8CD1B97923F003B6345 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C31F8CC1B97923F003B6345 /* Session.swift */; };
+		E3D402881B9898510080FD2A /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D402871B9898510080FD2A /* RestaurantTableViewCell.swift */; };
+		E3D4028F1B98A0E00080FD2A /* RestaurantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D4028E1B98A0E00080FD2A /* RestaurantTableViewController.swift */; };
+		E3D402911B98AA200080FD2A /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D402901B98AA200080FD2A /* Restaurant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +95,9 @@
 		3C31F8B61B978FCE003B6345 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		3C31F8CA1B979053003B6345 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		3C31F8CC1B97923F003B6345 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		E3D402871B9898510080FD2A /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
+		E3D4028E1B98A0E00080FD2A /* RestaurantTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewController.swift; sourceTree = "<group>"; };
+		E3D402901B98AA200080FD2A /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,7 +145,10 @@
 				3C31F8CA1B979053003B6345 /* SwiftyJSON.swift */,
 				3C31F8921B97888C003B6345 /* ViewController.swift */,
 				3C31F8CC1B97923F003B6345 /* Session.swift */,
+				E3D402901B98AA200080FD2A /* Restaurant.swift */,
+				E3D4028E1B98A0E00080FD2A /* RestaurantTableViewController.swift */,
 				3C31F8941B97888C003B6345 /* Main.storyboard */,
+				E3D402871B9898510080FD2A /* RestaurantTableViewCell.swift */,
 				3C31F8971B97888C003B6345 /* Images.xcassets */,
 				3C31F8991B97888C003B6345 /* LaunchScreen.xib */,
 				3C31F88E1B97888C003B6345 /* Supporting Files */,
@@ -322,7 +331,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3D402881B9898510080FD2A /* RestaurantTableViewCell.swift in Sources */,
 				3C31F8CD1B97923F003B6345 /* Session.swift in Sources */,
+				E3D4028F1B98A0E00080FD2A /* RestaurantTableViewController.swift in Sources */,
+				E3D402911B98AA200080FD2A /* Restaurant.swift in Sources */,
 				3C31F8CB1B979053003B6345 /* SwiftyJSON.swift in Sources */,
 				3C31F8931B97888C003B6345 /* ViewController.swift in Sources */,
 				3C31F8911B97888C003B6345 /* AppDelegate.swift in Sources */,
@@ -528,6 +540,7 @@
 				3C31F8AC1B97888C003B6345 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3C31F8AD1B97888C003B6345 /* Build configuration list for PBXNativeTarget "RoadTableAppTests" */ = {
 			isa = XCConfigurationList;
@@ -536,6 +549,7 @@
 				3C31F8AF1B97888C003B6345 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

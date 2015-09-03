@@ -23,8 +23,6 @@ class ViewController: UIViewController {
     }
     
     
-    
-    
     func createSession(origin: String, destination: String) {
         Alamofire.request(.POST, "http://roadtable.herokuapp.com/sessions", parameters: ["origin":"\(origin)",                                       "destination":"\(destination)"], encoding: .JSON)
             .responseJSON { (request, response, data, error) in
@@ -34,9 +32,8 @@ class ViewController: UIViewController {
                     println(error)
                 } else if let data: AnyObject = data {
                     let session = JSON(data)
-                    for (name, info) in session["restaurants"] {
-                        println(name)
-                        println(info["rating"])
+                    for (session, restaurant) in session["restaurants"] {
+                        println(restaurant["rating"])
                     }
                     println("done!")
                 }

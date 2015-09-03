@@ -13,6 +13,10 @@
 		3C31F8981B97888C003B6345 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C31F8971B97888C003B6345 /* Images.xcassets */; };
 		3C31F89B1B97888C003B6345 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C31F8991B97888C003B6345 /* LaunchScreen.xib */; };
 		3C31F8A71B97888C003B6345 /* RoadTableAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C31F8A61B97888C003B6345 /* RoadTableAppTests.swift */; };
+		3C31F8C51B979009003B6345 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C31F8BE1B978FCE003B6345 /* Alamofire.framework */; };
+		3C31F8C61B979009003B6345 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C31F8BE1B978FCE003B6345 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3C31F8CB1B979053003B6345 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C31F8CA1B979053003B6345 /* SwiftyJSON.swift */; };
+		3C31F8CD1B97923F003B6345 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C31F8CC1B97923F003B6345 /* Session.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,7 +27,56 @@
 			remoteGlobalIDString = 3C31F88A1B97888C003B6345;
 			remoteInfo = RoadTableApp;
 		};
+		3C31F8BD1B978FCE003B6345 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3C31F8B61B978FCE003B6345 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3319A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS";
+		};
+		3C31F8BF1B978FCE003B6345 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3C31F8B61B978FCE003B6345 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4DD67C0B1A5C55C900ED2280;
+			remoteInfo = "Alamofire OSX";
+		};
+		3C31F8C11B978FCE003B6345 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3C31F8B61B978FCE003B6345 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3E19A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS Tests";
+		};
+		3C31F8C31B978FCE003B6345 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3C31F8B61B978FCE003B6345 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F829C6B21A7A94F100A2CD59;
+			remoteInfo = "Alamofire OSX Tests";
+		};
+		3C31F8C71B979009003B6345 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3C31F8B61B978FCE003B6345 /* Alamofire.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F8111E3219A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3C31F8C91B979009003B6345 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3C31F8C61B979009003B6345 /* Alamofire.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3C31F88B1B97888C003B6345 /* RoadTableApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoadTableApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -36,6 +89,9 @@
 		3C31F8A01B97888C003B6345 /* RoadTableAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoadTableAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C31F8A51B97888C003B6345 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C31F8A61B97888C003B6345 /* RoadTableAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadTableAppTests.swift; sourceTree = "<group>"; };
+		3C31F8B61B978FCE003B6345 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
+		3C31F8CA1B979053003B6345 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		3C31F8CC1B97923F003B6345 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C31F8C51B979009003B6345 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +116,7 @@
 		3C31F8821B97888C003B6345 = {
 			isa = PBXGroup;
 			children = (
+				3C31F8B61B978FCE003B6345 /* Alamofire.xcodeproj */,
 				3C31F88D1B97888C003B6345 /* RoadTableApp */,
 				3C31F8A31B97888C003B6345 /* RoadTableAppTests */,
 				3C31F88C1B97888C003B6345 /* Products */,
@@ -78,7 +136,9 @@
 			isa = PBXGroup;
 			children = (
 				3C31F8901B97888C003B6345 /* AppDelegate.swift */,
+				3C31F8CA1B979053003B6345 /* SwiftyJSON.swift */,
 				3C31F8921B97888C003B6345 /* ViewController.swift */,
+				3C31F8CC1B97923F003B6345 /* Session.swift */,
 				3C31F8941B97888C003B6345 /* Main.storyboard */,
 				3C31F8971B97888C003B6345 /* Images.xcassets */,
 				3C31F8991B97888C003B6345 /* LaunchScreen.xib */,
@@ -112,6 +172,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		3C31F8B71B978FCE003B6345 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3C31F8BE1B978FCE003B6345 /* Alamofire.framework */,
+				3C31F8C01B978FCE003B6345 /* Alamofire.framework */,
+				3C31F8C21B978FCE003B6345 /* Alamofire iOS Tests.xctest */,
+				3C31F8C41B978FCE003B6345 /* Alamofire OSX Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -122,10 +193,12 @@
 				3C31F8871B97888C003B6345 /* Sources */,
 				3C31F8881B97888C003B6345 /* Frameworks */,
 				3C31F8891B97888C003B6345 /* Resources */,
+				3C31F8C91B979009003B6345 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3C31F8C81B979009003B6345 /* PBXTargetDependency */,
 			);
 			name = RoadTableApp;
 			productName = RoadTableApp;
@@ -179,6 +252,12 @@
 			mainGroup = 3C31F8821B97888C003B6345;
 			productRefGroup = 3C31F88C1B97888C003B6345 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 3C31F8B71B978FCE003B6345 /* Products */;
+					ProjectRef = 3C31F8B61B978FCE003B6345 /* Alamofire.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				3C31F88A1B97888C003B6345 /* RoadTableApp */,
@@ -186,6 +265,37 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		3C31F8BE1B978FCE003B6345 /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 3C31F8BD1B978FCE003B6345 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3C31F8C01B978FCE003B6345 /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 3C31F8BF1B978FCE003B6345 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3C31F8C21B978FCE003B6345 /* Alamofire iOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Alamofire iOS Tests.xctest";
+			remoteRef = 3C31F8C11B978FCE003B6345 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3C31F8C41B978FCE003B6345 /* Alamofire OSX Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Alamofire OSX Tests.xctest";
+			remoteRef = 3C31F8C31B978FCE003B6345 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		3C31F8891B97888C003B6345 /* Resources */ = {
@@ -212,6 +322,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C31F8CD1B97923F003B6345 /* Session.swift in Sources */,
+				3C31F8CB1B979053003B6345 /* SwiftyJSON.swift in Sources */,
 				3C31F8931B97888C003B6345 /* ViewController.swift in Sources */,
 				3C31F8911B97888C003B6345 /* AppDelegate.swift in Sources */,
 			);
@@ -232,6 +344,11 @@
 			isa = PBXTargetDependency;
 			target = 3C31F88A1B97888C003B6345 /* RoadTableApp */;
 			targetProxy = 3C31F8A11B97888C003B6345 /* PBXContainerItemProxy */;
+		};
+		3C31F8C81B979009003B6345 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Alamofire iOS";
+			targetProxy = 3C31F8C71B979009003B6345 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -341,6 +458,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = RoadTableApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -351,6 +469,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = RoadTableApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

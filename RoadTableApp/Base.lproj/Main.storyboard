@@ -78,10 +78,12 @@
                     <connections>
                         <outlet property="endTextField" destination="l5Z-PF-5sD" id="d9T-gf-NwL"/>
                         <outlet property="startTextField" destination="IF1-QI-gkC" id="Z0q-Fy-I6p"/>
+                        <segue destination="DBH-9c-1ZB" kind="presentation" identifier="nextView" id="ab8-Pd-lk3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="405" y="268"/>
         </scene>
         <!--RestaurantTableViewController-->
         <scene sceneID="HRm-Cz-Z02">
@@ -177,6 +179,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n0n-HO-cE7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1046" y="268"/>
         </scene>
     </scenes>
     <resources>

@@ -14,7 +14,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var startTextField: UITextField!
     @IBOutlet weak var endTextField: UITextField!
     
-    
     var service:RestaurantService!
     
     override func viewDidLoad() {
@@ -28,6 +27,7 @@ class ViewController: UIViewController {
     @IBAction func getTablesButtonClicked(sender: UIButton) {
         service = RestaurantService()
         service.createSession(startTextField.text, destination: endTextField.text)
+        performSegueWithIdentifier("nextView", sender: self)
     }
     
 

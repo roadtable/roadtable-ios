@@ -10,5 +10,18 @@ import Foundation
 
 class Settings {
     
-    var viewRestaurants = "http://roadtable.herokuapp.com"
+    
+    
+    var api_key:String!
+    var viewRestaurants:String!
+    
+    init() {
+        self.api_key = NSUUID().UUIDString
+        self.viewRestaurants = "http://roadtable.herokuapp.com/sessions?api_key=\(api_key)"
+        println(viewRestaurants)
+    }
+    
+//    var api_key = NSUUID().UUIDString
+//    var viewRestaurants = "http://roadtable.herokuapp.com/sessions?api_key=\(api_key)"
+    
 }

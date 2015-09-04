@@ -37,12 +37,13 @@
                                     <constraint firstAttribute="width" constant="56" id="SIb-Re-b0d"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwq-Qr-xMe">
                                 <rect key="frame" x="264" y="295" width="73" height="30"/>
                                 <state key="normal" title="Get Tables">
+                                    <color key="titleColor" red="0.93797536375661372" green="0.76735165424024465" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -56,11 +57,11 @@
                                     <constraint firstAttribute="width" constant="62" id="uVV-fY-tCF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.19047619047619047" green="0.19047619047619047" blue="0.19047619047619047" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="IF1-QI-gkC" firstAttribute="leading" secondItem="l5Z-PF-5sD" secondAttribute="leading" id="0Vf-wq-LcU"/>
                             <constraint firstItem="rwq-Qr-xMe" firstAttribute="centerX" secondItem="l5Z-PF-5sD" secondAttribute="centerX" id="5rA-jl-60E"/>

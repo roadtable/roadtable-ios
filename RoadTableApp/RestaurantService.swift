@@ -35,7 +35,7 @@ class RestaurantService {
     
     
     func createSession(origin: String, destination: String) {
-        Alamofire.request(.POST, "http://roadtable.herokuapp.com/sessions", parameters: ["origin":"\(origin)", "destination":"\(destination)"], encoding: .JSON)
+        Alamofire.request(.POST, "http://roadtable.herokuapp.com/sessions", parameters: ["origin":"\(origin)", "destination":"\(destination)", "api_key":"\(settings.api_key)"], encoding: .JSON)
             .responseJSON { (request, response, data, error) in
                 if let anError = error {
                     // got an error in getting the data, need to handle it

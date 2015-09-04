@@ -27,6 +27,7 @@ class ViewController: UIViewController {
     @IBAction func getTablesButtonClicked(sender: UIButton) {
         service = RestaurantService()
         service.createSession(startTextField.text, destination: endTextField.text)
+        println(service.settings.api_key)
         performSegueWithIdentifier("nextView", sender: self)
     }
     

@@ -10,57 +10,62 @@ import UIKit
 import Alamofire
 
 class RestaurantTableViewController: UITableViewController {
-
+    var restaurantsCollection = [Restaurant]()
+    
+    var service:RestaurantService!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        Alamofire.request(.GET, "http://roadtable.herokuapp.com")
-            .responseJSON { (request, response, data, error) in
-                if let anError = error {
-                    // got an error in getting the data, need to handle it
-                    println("error calling POST on /posts")
-                    println(error)
-                } else if let data: AnyObject = data {
-                    let session = JSON(data)
-                    self.loadRestaurants( session )
-                }
+        service = RestaurantService()
+        service.getRestaurants {
+            (response) in
+            self.loadRestaurants(response["restaurants"]! as! NSArray)
         }
     }
     
-    func loadRestaurants( session : JSON ) {
-        for (session, restaurant) in session["restaurants"] {
-            println(restaurant["name"])
+    func loadRestaurants(restaurants:NSArray) {
+        for restaurant in restaurants {
+            var name = restaurant["name"] as! String
+            var rating_img_url = restaurant["rating_img_url"] as! String
+            var categories = restaurant["categories"] as! String
+            var restaurantObj = Restaurant(name: name, rating_img_url: rating_img_url, categories: categories)
+            restaurantsCollection.append(restaurantObj)
+            dispatch_async(dispatch_get_main_queue()) {
+                self.tableView.reloadData()
+            }
         }
-        println(session["restaurants"].count)
+    
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
 
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-        return 0
+        return restaurantsCollection.count
     }
 
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! UITableViewCell
 
-        // Configure the cell...
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        //Table view cells are reused and should be dequeed using a cell identifier
+        
+        let cellIdentifier = "RestaurantTableViewCell"
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! RestaurantTableViewCell
+        
+        //Fetches the appropriate restaurant for the data source layout.
+        
+        let restaurant = restaurantsCollection[indexPath.row]
+        
+        cell.nameLabel.text = restaurant.name
+        cell.categoryLabel.text = restaurant.categories
+        cell.ratingImageView.image = UIImage(contentsOfFile: restaurant.rating_img_url)
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.

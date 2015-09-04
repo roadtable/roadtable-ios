@@ -12,21 +12,4 @@ class Settings {
     
     let shareData = ShareData.sharedInstance
     
-    var viewRestaurants = "http://roadtable.herokuapp.com/sessions?api_key="
-    
-//    let api_key:String! = NSUUID().UUIDString
-//    var viewRestaurants:String!
-//    
-//    
-//    init() {
-////        self.api_key = NSUUID().UUIDString
-//        self.viewRestaurants = "http://roadtable.herokuapp.com/sessions?api_key=\(api_key)"
-//        println(viewRestaurants)
-//    }
-    
-    
-    
-
-    
-    
 }

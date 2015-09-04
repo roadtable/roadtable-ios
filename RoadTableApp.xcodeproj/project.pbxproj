@@ -16,7 +16,6 @@
 		3C31F8C51B979009003B6345 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C31F8BE1B978FCE003B6345 /* Alamofire.framework */; };
 		3C31F8C61B979009003B6345 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C31F8BE1B978FCE003B6345 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3C31F8CB1B979053003B6345 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C31F8CA1B979053003B6345 /* SwiftyJSON.swift */; };
-		3C31F8CD1B97923F003B6345 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C31F8CC1B97923F003B6345 /* Session.swift */; };
 		E3403C011B99316D0088C4D5 /* RestaurantService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3403C001B99316D0088C4D5 /* RestaurantService.swift */; };
 		E3403C061B9931910088C4D5 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3403C051B9931910088C4D5 /* Settings.swift */; };
 		E3D402881B9898510080FD2A /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D402871B9898510080FD2A /* RestaurantTableViewCell.swift */; };
@@ -96,7 +95,6 @@
 		3C31F8A61B97888C003B6345 /* RoadTableAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadTableAppTests.swift; sourceTree = "<group>"; };
 		3C31F8B61B978FCE003B6345 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		3C31F8CA1B979053003B6345 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
-		3C31F8CC1B97923F003B6345 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		E3403C001B99316D0088C4D5 /* RestaurantService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantService.swift; sourceTree = "<group>"; };
 		E3403C051B9931910088C4D5 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		E3D402871B9898510080FD2A /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
@@ -145,19 +143,18 @@
 		3C31F88D1B97888C003B6345 /* RoadTableApp */ = {
 			isa = PBXGroup;
 			children = (
-				3C31F8901B97888C003B6345 /* AppDelegate.swift */,
 				3C31F8CA1B979053003B6345 /* SwiftyJSON.swift */,
+				3C31F8901B97888C003B6345 /* AppDelegate.swift */,
 				3C31F8921B97888C003B6345 /* ViewController.swift */,
-				3C31F8CC1B97923F003B6345 /* Session.swift */,
+				3C31F8941B97888C003B6345 /* Main.storyboard */,
+				E3D4028E1B98A0E00080FD2A /* RestaurantTableViewController.swift */,
+				E3D402871B9898510080FD2A /* RestaurantTableViewCell.swift */,
+				E3403C051B9931910088C4D5 /* Settings.swift */,
 				E3D402901B98AA200080FD2A /* Restaurant.swift */,
 				E3403C001B99316D0088C4D5 /* RestaurantService.swift */,
-				E3D4028E1B98A0E00080FD2A /* RestaurantTableViewController.swift */,
-				3C31F8941B97888C003B6345 /* Main.storyboard */,
-				E3D402871B9898510080FD2A /* RestaurantTableViewCell.swift */,
 				3C31F8971B97888C003B6345 /* Images.xcassets */,
 				3C31F8991B97888C003B6345 /* LaunchScreen.xib */,
 				3C31F88E1B97888C003B6345 /* Supporting Files */,
-				E3403C051B9931910088C4D5 /* Settings.swift */,
 			);
 			path = RoadTableApp;
 			sourceTree = "<group>";
@@ -338,7 +335,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3D402881B9898510080FD2A /* RestaurantTableViewCell.swift in Sources */,
-				3C31F8CD1B97923F003B6345 /* Session.swift in Sources */,
 				E3D4028F1B98A0E00080FD2A /* RestaurantTableViewController.swift in Sources */,
 				E3D402911B98AA200080FD2A /* Restaurant.swift in Sources */,
 				E3403C011B99316D0088C4D5 /* RestaurantService.swift in Sources */,

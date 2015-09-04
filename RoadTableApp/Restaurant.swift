@@ -26,17 +26,5 @@ class Restaurant {
         return ""
     }
     
-    func getRestaurantsAtPath( completionHandler: (AnyObject?, NSError?) -> Void)  {
-        Alamofire.request(.GET, "http://roadtable.herokuapp.com")
-            .responseJSON { (request, response, data, error) in
-            if let anError = error {
-                // got an error in getting the data, need to handle it
-                completionHandler(nil, error)
-                return
-            }
-            completionHandler(data, nil)
-        }
-    }
-    
 
 }

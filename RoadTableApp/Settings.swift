@@ -10,5 +10,6 @@ import Foundation
 
 class Settings {
     
-    var viewRestaurants = "http://roadtable.herokuapp.com"
+    let shareData = ShareData.sharedInstance
+    
 }

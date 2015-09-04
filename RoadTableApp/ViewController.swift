@@ -10,48 +10,37 @@ import UIKit
 import Alamofire
 
 class ViewController: UIViewController {
+    // Mark: Properties
+    @IBOutlet weak var startTextField: UITextField!
+    @IBOutlet weak var endTextField: UITextField!
     
-
+    var service:RestaurantService!
+    let shareData = ShareData.sharedInstance
+    
     override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        createSession("indianapolis", destination: "bloomington")
-        
-        
+        super.viewDidLoad()  
     }
     
-    
-    
-    
-    func createSession(origin: String, destination: String) {
-        Alamofire.request(.POST, "http://roadtable.herokuapp.com/sessions", parameters: ["origin":"\(origin)",                                       "destination":"\(destination)"], encoding: .JSON)
-            .responseJSON { (request, response, data, error) in
-                if let anError = error {
-                    // got an error in getting the data, need to handle it
-                    println("error calling POST on /posts")
-                    println(error)
-                } else if let data: AnyObject = data {
-                    let session = JSON(data)
-                    for (name, info) in session["restaurants"] {
-                        println(name)
-                        println(info["rating"])
-                    }
-                    println("done!")
-                }
-        }
-        
-        
-    } // end createSession()
- 
-    
-    
+    // Mark: Actions
+    @IBAction func getTablesButtonClicked(sender: UIButton) {
+        service = RestaurantService()
+        self.shareData.apiKey = NSUUID().UUIDString
+        service.createSession(startTextField.text, destination: endTextField.text)
+        performSegueWithIdentifier("nextView", sender: self)
+
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+//    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+//        if (segue.identifier == "nextView") {
+//            var key = segue!.destinationViewController as! RestaurantTableViewController
+//            key.toPass = apiKey
+//        }
+//    }
 
 
 }

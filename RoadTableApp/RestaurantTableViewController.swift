@@ -7,14 +7,15 @@
 //
 
 import UIKit
-import Alamofire
 
 class RestaurantTableViewController: UITableViewController {
     var restaurantsCollection = [Restaurant]()
     
     var service:RestaurantService!
+    let shareData = ShareData.sharedInstance
     
     override func viewDidLoad() {
+        println(self.shareData.apiKey)
         super.viewDidLoad()
         service = RestaurantService()
         service.getRestaurants {
@@ -25,21 +26,18 @@ class RestaurantTableViewController: UITableViewController {
     
     func loadRestaurants(restaurants:NSArray) {
         for restaurant in restaurants {
-            var name = restaurant["name"] as! String
-            var rating_img_url = restaurant["rating_img_url"] as! String
-            var categories = restaurant["categories"] as! String
+            var name = restaurant["name"]! as! String
+            var rating_img_url = restaurant["rating_img_url"]! as! String
+            var categories = restaurant["categories"]! as! String
             var restaurantObj = Restaurant(name: name, rating_img_url: rating_img_url, categories: categories)
             restaurantsCollection.append(restaurantObj)
             dispatch_async(dispatch_get_main_queue()) {
                 self.tableView.reloadData()
             }
         }
-    
     }
     
-
     // MARK: - Table view data source
-
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }

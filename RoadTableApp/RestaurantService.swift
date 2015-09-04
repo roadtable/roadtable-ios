@@ -12,13 +12,14 @@ import Alamofire
 class RestaurantService {
     
     var settings:Settings!
+    let shareData = ShareData.sharedInstance
     
     init(){
         self.settings = Settings()
     }
     
     func getRestaurants(callback:(NSDictionary) -> ()) {
-        request(settings.viewRestaurants, callback: callback)
+        request("http://roadtable.herokuapp.com/sessions?api_key=\(self.shareData.apiKey)", callback: callback)
     }
     
     func request(url:String, callback:(NSDictionary) -> () ) {
@@ -35,7 +36,7 @@ class RestaurantService {
     
     
     func createSession(origin: String, destination: String) {
-        Alamofire.request(.POST, "http://roadtable.herokuapp.com/sessions", parameters: ["origin":"\(origin)", "destination":"\(destination)", "api_key":"\(settings.api_key)"], encoding: .JSON)
+        Alamofire.request(.POST, "http://roadtable.herokuapp.com/sessions", parameters: ["origin":"\(origin)", "destination":"\(destination)", "api_key":"\(self.shareData.apiKey)"], encoding: .JSON)
             .responseJSON { (request, response, data, error) in
                 if let anError = error {
                     // got an error in getting the data, need to handle it

@@ -79,7 +79,7 @@
                     <connections>
                         <outlet property="endTextField" destination="l5Z-PF-5sD" id="d9T-gf-NwL"/>
                         <outlet property="startTextField" destination="IF1-QI-gkC" id="Z0q-Fy-I6p"/>
-                        <segue destination="DBH-9c-1ZB" kind="presentation" identifier="nextView" id="ab8-Pd-lk3"/>
+                        <segue destination="DBH-9c-1ZB" kind="show" identifier="nextView" id="ab8-Pd-lk3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

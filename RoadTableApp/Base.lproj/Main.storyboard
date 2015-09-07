@@ -79,12 +79,12 @@
                     <connections>
                         <outlet property="endTextField" destination="l5Z-PF-5sD" id="d9T-gf-NwL"/>
                         <outlet property="startTextField" destination="IF1-QI-gkC" id="Z0q-Fy-I6p"/>
-                        <segue destination="DBH-9c-1ZB" kind="show" identifier="nextView" id="ab8-Pd-lk3"/>
+                        <segue destination="AoR-OW-P3x" kind="show" identifier="nextView" id="ab8-Pd-lk3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="405" y="268"/>
+            <point key="canvasLocation" x="265" y="428"/>
         </scene>
         <!--RestaurantTableViewController-->
         <scene sceneID="HRm-Cz-Z02">
@@ -94,6 +94,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" id="J35-K3-c3w">
+                            <rect key="frame" x="0.0" y="122" width="600" height="37"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </activityIndicatorView>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="RestaurantTableViewCell" rowHeight="100" id="0Wl-A1-Tla" customClass="RestaurantTableViewCell" customModule="RoadTableApp" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -177,10 +182,39 @@
                             <outlet property="delegate" destination="DBH-9c-1ZB" id="bX6-tp-Q9t"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="aDM-k1-krd">
+                        <barButtonItem key="leftBarButtonItem" title="New Route" id="bPL-El-xFR">
+                            <connections>
+                                <segue destination="vXZ-lx-hvc" kind="show" id="yP5-CQ-jqo"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Upcoming Stops" id="Wsd-Y5-Z7I"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="activityIndicatorView" destination="J35-K3-c3w" id="H9s-Z4-JLi"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n0n-HO-cE7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1046" y="268"/>
+            <point key="canvasLocation" x="1349" y="713"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Rg6-66-QSV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AoR-OW-P3x" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6gg-9d-0uS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="DBH-9c-1ZB" kind="relationship" relationship="rootViewController" id="1qR-ej-4Qy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Zl-le-xy4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1349" y="-166"/>
         </scene>
     </scenes>
     <resources>

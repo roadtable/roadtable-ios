@@ -9,12 +9,17 @@
 import UIKit
 
 class RestaurantTableViewController: UITableViewController {
+    // Mark: Properties
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    
+    
     var restaurantsCollection = [Restaurant]()
     
     var service:RestaurantService!
     let shareData = ShareData.sharedInstance
     
     override func viewDidLoad() {
+        activityIndicatorView.startAnimating()
         println(self.shareData.apiKey)
         super.viewDidLoad()
         service = RestaurantService()

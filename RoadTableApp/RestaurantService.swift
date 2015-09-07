@@ -49,5 +49,20 @@ class RestaurantService {
         }
     } // end createSession()
     
+    func addRestaurantToList(id: String) {
+        Alamofire.request(.POST, "http://roadtable.herokuapp.com/sessions/add_to_list", parameters: ["id":"\(id)", "api_key":"\(self.shareData.apiKey)"], encoding: .JSON)
+            .responseJSON { (request, response, data, error) in
+                if let anError = error {
+                    // got an error in getting the data, need to handle it
+                    println("error calling POST on /posts")
+                    println(error)
+                } else if let data: AnyObject = data {
+                    let session = JSON(data)
+                    println(response)
+                }
+                println(self.shareData.apiKey)
+        }
+        
+    }// end addRestaurantToList()
     
 }

@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IF1-QI-gkC">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IF1-QI-gkC">
                                 <rect key="frame" x="167" y="135" width="267" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="267" id="P9b-o2-Zpy"/>
@@ -25,12 +25,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l5Z-PF-5sD">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l5Z-PF-5sD">
                                 <rect key="frame" x="167" y="239" width="267" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="37s-B9-uat">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Start" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="37s-B9-uat">
                                 <rect key="frame" x="272" y="106" width="56" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="5xa-gD-fkk"/>
@@ -40,7 +40,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwq-Qr-xMe">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwq-Qr-xMe">
                                 <rect key="frame" x="264" y="295" width="73" height="30"/>
                                 <state key="normal" title="Get Tables">
                                     <color key="titleColor" red="0.93797536375661372" green="0.76735165424024465" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -50,7 +50,7 @@
                                     <action selector="getTablesButtonClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="wWo-Bw-Qkf"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5VF-ti-1I3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="End" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5VF-ti-1I3">
                                 <rect key="frame" x="269" y="210" width="62" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="67U-cI-b0f"/>
@@ -90,7 +90,7 @@
         <scene sceneID="HRm-Cz-Z02">
             <objects>
                 <tableViewController storyboardIdentifier="RestaurantTableViewController" title="RestaurantTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DBH-9c-1ZB" customClass="RestaurantTableViewController" customModule="RoadTableApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="22" sectionFooterHeight="22" id="kda-Op-fBV">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="22" sectionFooterHeight="22" id="kda-Op-fBV" customClass="RestaurantTableView">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -169,11 +169,13 @@
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
+                                <gestureRecognizers/>
                                 <connections>
                                     <outlet property="categoryLabel" destination="NnU-tN-8fW" id="9ys-S5-DKe"/>
                                     <outlet property="nameLabel" destination="gHt-pk-obS" id="9By-Lv-9DF"/>
                                     <outlet property="photoImageView" destination="WGx-sH-0Gl" id="ycR-r0-OxD"/>
                                     <outlet property="ratingImageView" destination="vbt-8C-hmG" id="Jit-xq-372"/>
+                                    <outletCollection property="gestureRecognizers" destination="2Hr-hA-oXv" appends="YES" id="YXF-lM-YWL"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -195,6 +197,11 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n0n-HO-cE7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="2Hr-hA-oXv">
+                    <connections>
+                        <action selector="restaurantTableViewCellSwiped:" destination="DBH-9c-1ZB" id="oRe-3w-3f0"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1349" y="713"/>
         </scene>

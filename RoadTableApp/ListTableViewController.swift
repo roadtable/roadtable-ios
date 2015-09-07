@@ -41,7 +41,8 @@ class ListTableViewController: UITableViewController {
             var rating_img_url = restaurant["rating_img_url"]! as! String
             var categories = restaurant["categories"]! as! String
             var id = restaurant["id"] as! String
-            var restaurantObj = Restaurant(name: name, rating_img_url: rating_img_url, categories: categories, id: id)
+            var image_url = restaurant["image_url"]! as! String
+            var restaurantObj = Restaurant(name: name, rating_img_url: rating_img_url, categories: categories, id: id, image_url: image_url)
             restaurantsList.append(restaurantObj)
             dispatch_async(dispatch_get_main_queue()) {
                 self.tableView.reloadData()
@@ -62,9 +63,9 @@ class ListTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         //Table view cells are reused and should be dequeed using a cell identifier
         
-        let cellIdentifier = "RestaurantTableViewCell"
+        let cellIdentifier = "ListTableViewCell"
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! RestaurantTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ListTableViewCell
         
         //Fetches the appropriate restaurant for the data source layout.
         

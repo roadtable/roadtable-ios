@@ -22,6 +22,10 @@ class RestaurantService {
         request("http://roadtable.herokuapp.com/sessions?api_key=\(self.shareData.apiKey)", callback: callback)
     }
     
+    func getList(callback:(NSDictionary) -> ()) {
+        request("http://roadtable.herokuapp.com/sessions/view_list?api_key=\(self.shareData.apiKey)", callback: callback)
+    }
+    
     func request(url:String, callback:(NSDictionary) -> () ) {
         var nsURL = NSURL(string: url)
         

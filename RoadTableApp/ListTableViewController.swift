@@ -42,12 +42,20 @@ class ListTableViewController: UITableViewController {
             var categories = restaurant["categories"]! as! String
             var id = restaurant["id"] as! String
             var image_url = restaurant["image_url"]! as! String
-            var restaurantObj = Restaurant(name: name, rating_img_url: rating_img_url, categories: categories, id: id, image_url: image_url)
+            var mobile_url = restaurant["mobile_url"] as! String
+            var restaurantObj = Restaurant(name: name, rating_img_url: rating_img_url, categories: categories, id: id, image_url: image_url, mobile_url: mobile_url)
             restaurantsList.append(restaurantObj)
             dispatch_async(dispatch_get_main_queue()) {
                 self.tableView.reloadData()
             }
         }
+    }
+    
+    // Click goes to Yelp
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let restaurant = restaurantsList[indexPath.row]
+        let url = NSURL(string: restaurant.mobile_url)!
+        UIApplication.sharedApplication().openURL(url)
     }
     
     // MARK: - Table view data source

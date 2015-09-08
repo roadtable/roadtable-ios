@@ -7,8 +7,7 @@
 //
 
 import Foundation
-import Alamofire
-
+import CoreLocation
 
 class Restaurant {
     
@@ -18,19 +17,16 @@ class Restaurant {
     var id : String
     var image_url : String
     var mobile_url : String
+    var center: CLLocationCoordinate2D
     
-    init(name:String, rating_img_url:String, categories:String, id:String, image_url:String, mobile_url:String) {
+    init(name:String, rating_img_url:String, categories:String, id:String, image_url:String, mobile_url:String, center: CLLocationCoordinate2D) {
         self.name = name
         self.rating_img_url = rating_img_url
         self.categories = categories
         self.id = id
         self.image_url = image_url
         self.mobile_url = mobile_url
+        self.center = center
     }
-    
-    func toJSON() -> String {
-        return ""
-    }
-    
 
-}
+} // end Restaurant

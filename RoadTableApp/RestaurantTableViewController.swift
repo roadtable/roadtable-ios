@@ -14,6 +14,7 @@ class RestaurantTableViewController: UITableViewController {
     
 
     var restaurantsCollection = [Restaurant]()
+    var restaurantsList = [Restaurant]()
     
     var service:RestaurantService!
     let shareData = ShareData.sharedInstance
@@ -33,6 +34,7 @@ class RestaurantTableViewController: UITableViewController {
     @IBAction func restaurantTableViewCellSwiped(sender: UISwipeGestureRecognizer) {
     }
 
+
     
     func loadRestaurants(restaurants:NSArray) {
         for restaurant in restaurants {
@@ -40,8 +42,24 @@ class RestaurantTableViewController: UITableViewController {
             var rating_img_url = restaurant["rating_img_url"]! as! String
             var categories = restaurant["categories"]! as! String
             var id = restaurant["id"] as! String
-            var restaurantObj = Restaurant(name: name, rating_img_url: rating_img_url, categories: categories, id: id)
+            var image_url = restaurant["image_url"]! as! String
+            var restaurantObj = Restaurant(name: name, rating_img_url: rating_img_url, categories: categories, id: id, image_url: image_url)
             restaurantsCollection.append(restaurantObj)
+            dispatch_async(dispatch_get_main_queue()) {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    func loadRestaurantsList(restaurants:NSArray) {
+        for restaurant in restaurants {
+            var name = restaurant["name"]! as! String
+            var rating_img_url = restaurant["rating_img_url"]! as! String
+            var categories = restaurant["categories"]! as! String
+            var id = restaurant["id"] as! String
+            var image_url = restaurant["image_url"]! as! String
+            var restaurantObj = Restaurant(name: name, rating_img_url: rating_img_url, categories: categories, id: id, image_url: image_url)
+            restaurantsList.append(restaurantObj)
             dispatch_async(dispatch_get_main_queue()) {
                 self.tableView.reloadData()
             }
@@ -72,6 +90,7 @@ class RestaurantTableViewController: UITableViewController {
         cell.nameLabel.text = restaurant.name
         cell.categoryLabel.text = restaurant.categories
         cell.ratingImageView.image = UIImage(contentsOfFile: restaurant.rating_img_url)
+        cell.photoImageView.image = UIImage(contentsOfFile: restaurant.image_url)
 
         return cell
     }

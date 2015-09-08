@@ -29,6 +29,7 @@ class RestaurantTableViewController: UITableViewController {
             (response) in
             self.loadRestaurants(response["restaurants"]! as! NSArray)
         }
+        activityIndicatorView.stopAnimating()
     }
     
     //MARK Actions

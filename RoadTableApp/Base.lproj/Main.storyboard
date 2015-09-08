@@ -282,7 +282,7 @@
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                         </button>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="HTV-vm-YOT">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="HTV-vm-YOT">
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="HTV-vm-YOT" secondAttribute="height" multiplier="1:1" id="Bue-5Q-VTd"/>
@@ -295,6 +295,7 @@
                                         <constraint firstItem="HTV-vm-YOT" firstAttribute="top" secondItem="viV-8i-SAm" secondAttribute="topMargin" constant="-8" id="6fM-rS-c4S"/>
                                         <constraint firstItem="GAw-4L-IQR" firstAttribute="top" secondItem="HTV-vm-YOT" secondAttribute="top" id="D8s-Oc-MOc"/>
                                         <constraint firstItem="h46-jT-Snq" firstAttribute="leading" secondItem="HTV-vm-YOT" secondAttribute="trailing" constant="8" id="H8V-0u-lrD"/>
+                                        <constraint firstItem="qOu-IV-bkO" firstAttribute="leading" secondItem="HTV-vm-YOT" secondAttribute="trailing" constant="8" id="o2o-NA-AqM"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="HTV-vm-YOT" secondAttribute="bottom" constant="-8" id="sqb-0c-dJT"/>
                                         <constraint firstItem="h46-jT-Snq" firstAttribute="top" secondItem="qOu-IV-bkO" secondAttribute="bottom" constant="7" id="uJL-7z-Txe"/>
                                         <constraint firstItem="GAw-4L-IQR" firstAttribute="leading" secondItem="HTV-vm-YOT" secondAttribute="trailing" constant="8" symbolic="YES" id="xMf-L4-aVG"/>

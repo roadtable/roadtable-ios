@@ -19,6 +19,8 @@
 		3C9CEBEE1B9A1AF1001DCAC4 /* ShareData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9CEBED1B9A1AF1001DCAC4 /* ShareData.swift */; };
 		E3403C011B99316D0088C4D5 /* RestaurantService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3403C001B99316D0088C4D5 /* RestaurantService.swift */; };
 		E3403C061B9931910088C4D5 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3403C051B9931910088C4D5 /* Settings.swift */; };
+		E399BA851B9E238B00F793B1 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E399BA841B9E238B00F793B1 /* ListTableViewController.swift */; };
+		E399BA871B9E353800F793B1 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E399BA861B9E353800F793B1 /* ListTableViewCell.swift */; };
 		E3D402881B9898510080FD2A /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D402871B9898510080FD2A /* RestaurantTableViewCell.swift */; };
 		E3D4028F1B98A0E00080FD2A /* RestaurantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D4028E1B98A0E00080FD2A /* RestaurantTableViewController.swift */; };
 		E3D402911B98AA200080FD2A /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D402901B98AA200080FD2A /* Restaurant.swift */; };
@@ -99,6 +101,8 @@
 		3C9CEBED1B9A1AF1001DCAC4 /* ShareData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareData.swift; sourceTree = "<group>"; };
 		E3403C001B99316D0088C4D5 /* RestaurantService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantService.swift; sourceTree = "<group>"; };
 		E3403C051B9931910088C4D5 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		E399BA841B9E238B00F793B1 /* ListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
+		E399BA861B9E353800F793B1 /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		E3D402871B9898510080FD2A /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
 		E3D4028E1B98A0E00080FD2A /* RestaurantTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewController.swift; sourceTree = "<group>"; };
 		E3D402901B98AA200080FD2A /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
@@ -150,6 +154,8 @@
 				3C31F8921B97888C003B6345 /* ViewController.swift */,
 				E3D4028E1B98A0E00080FD2A /* RestaurantTableViewController.swift */,
 				E3D402871B9898510080FD2A /* RestaurantTableViewCell.swift */,
+				E399BA841B9E238B00F793B1 /* ListTableViewController.swift */,
+				E399BA861B9E353800F793B1 /* ListTableViewCell.swift */,
 				E3403C051B9931910088C4D5 /* Settings.swift */,
 				3C9CEBED1B9A1AF1001DCAC4 /* ShareData.swift */,
 				E3D402901B98AA200080FD2A /* Restaurant.swift */,
@@ -337,9 +343,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E399BA871B9E353800F793B1 /* ListTableViewCell.swift in Sources */,
 				E3D402881B9898510080FD2A /* RestaurantTableViewCell.swift in Sources */,
 				E3D4028F1B98A0E00080FD2A /* RestaurantTableViewController.swift in Sources */,
 				E3D402911B98AA200080FD2A /* Restaurant.swift in Sources */,
+				E399BA851B9E238B00F793B1 /* ListTableViewController.swift in Sources */,
 				E3403C011B99316D0088C4D5 /* RestaurantService.swift in Sources */,
 				3C31F8CB1B979053003B6345 /* SwiftyJSON.swift in Sources */,
 				3C9CEBEE1B9A1AF1001DCAC4 /* ShareData.swift in Sources */,

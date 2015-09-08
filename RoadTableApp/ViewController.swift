@@ -18,7 +18,10 @@ class ViewController: UIViewController {
     let shareData = ShareData.sharedInstance
     
     override func viewDidLoad() {
-        super.viewDidLoad()  
+        super.viewDidLoad()
+        // Ask for permission to send push notifications
+        let notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert, categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
     }
     
     // Mark: Actions

@@ -86,4 +86,20 @@ class RestaurantService {
         
     }// end addRestaurantToList()
     
+    func deleteRestaurantToList(id: String) {
+        Alamofire.request(.POST, "http://roadtable.herokuapp.com/sessions/remove_from_list", parameters: ["id":"\(id)", "api_key":"\(self.shareData.apiKey)"], encoding: .JSON)
+            .responseJSON { (request, response, data, error) in
+                if let anError = error {
+                    // got an error in getting the data, need to handle it
+                    println("error calling POST on /posts")
+                    println(error)
+                } else if let data: AnyObject = data {
+                    let session = JSON(data)
+                    println(response)
+                }
+                println(self.shareData.apiKey)
+        }
+        
+    }// end addRestaurantToList()
+    
 }

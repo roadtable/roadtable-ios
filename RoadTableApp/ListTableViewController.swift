@@ -85,6 +85,7 @@ class ListTableViewController: UITableViewController {
     
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
     }
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
@@ -93,10 +94,11 @@ class ListTableViewController: UITableViewController {
             
             let firstActivityItem = self.restaurantsList[indexPath.row]
             
+            self.service.deleteRestaurantToList(firstActivityItem.id)
+            self.restaurantsList.removeAtIndex(indexPath.row)
+            self.tableView.reloadData()
             
         }
-        
-        deleteAction.backgroundColor = UIColor.blueColor()
         
         return [deleteAction]
     }

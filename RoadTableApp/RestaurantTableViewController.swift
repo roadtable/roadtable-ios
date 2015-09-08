@@ -110,6 +110,7 @@ class RestaurantTableViewController: UITableViewController {
             let firstActivityItem = self.restaurantsCollection[indexPath.row]
             
             self.service.addRestaurantToList(firstActivityItem.id)
+            self.tableView.reloadData()
             
         }
         

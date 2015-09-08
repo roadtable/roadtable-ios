@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import UIKit
 
 class RestaurantService {
     
@@ -36,6 +37,22 @@ class RestaurantService {
             callback(response)
         }
         task.resume()
+    }
+    
+    func getDataFromUrl(urL:NSURL, completion: ((data: NSData?) -> Void)) {
+        NSURLSession.sharedSession().dataTaskWithURL(urL) { (data, response, error) in
+            completion(data: data)
+            }.resume()
+    }
+    
+    func downloadImage(url:NSURL, imageView:UIImageView){
+        println("Started downloading \"\(url.lastPathComponent!.stringByDeletingPathExtension)\".")
+        getDataFromUrl(url) { data in
+            dispatch_async(dispatch_get_main_queue()) {
+                println("Finished downloading \"\(url.lastPathComponent!.stringByDeletingPathExtension)\".")
+                imageView.image = UIImage(data: data!)
+            }
+        }
     }
     
     

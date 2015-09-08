@@ -87,10 +87,14 @@ class RestaurantTableViewController: UITableViewController {
         
         let restaurant = restaurantsCollection[indexPath.row]
         
+        let restaurantImgURL = NSURL(string: restaurant.image_url)
+        let restaurantRatingURL = NSURL(string: restaurant.rating_img_url)
+
+        self.service.downloadImage(restaurantImgURL!, imageView: cell.photoImageView)
+        self.service.downloadImage(restaurantRatingURL!, imageView: cell.ratingImageView)
+        
         cell.nameLabel.text = restaurant.name
         cell.categoryLabel.text = restaurant.categories
-        cell.ratingImageView.image = UIImage(contentsOfFile: restaurant.rating_img_url)
-        cell.photoImageView.image = UIImage(contentsOfFile: restaurant.image_url)
 
         return cell
     }

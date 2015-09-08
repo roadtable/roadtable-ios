@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import CoreLocation
 
 class ViewController: UIViewController {
     // Mark: Properties
@@ -19,9 +20,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Ask for permission to send push notifications
-        let notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert, categories: nil)
-        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
     }
     
     // Mark: Actions
@@ -37,14 +35,6 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-//    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-//        if (segue.identifier == "nextView") {
-//            var key = segue!.destinationViewController as! RestaurantTableViewController
-//            key.toPass = apiKey
-//        }
-//    }
-
 
 }
 

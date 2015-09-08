@@ -18,6 +18,8 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>RoadTable uses your location to alert you when you&apos;re near a requested stop.</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>

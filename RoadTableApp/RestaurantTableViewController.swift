@@ -129,7 +129,7 @@ class RestaurantTableViewController: UITableViewController {
             println(notification.region)
             println(currentRestaurant.center)
             
-//            self.tableView.reloadData()
+            self.tableView.reloadData()
         }
         
         addAction.backgroundColor = UIColor.blueColor()

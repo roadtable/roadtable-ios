@@ -23,8 +23,8 @@ class Restaurant {
         self.name = name
         self.rating_img_url = rating_img_url
         self.categories = categories
-        self.id = id
         self.image_url = image_url
+        self.id = id
         self.mobile_url = mobile_url
         self.center = center
     }

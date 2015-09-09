@@ -126,7 +126,10 @@ class RestaurantTableViewController: UITableViewController {
             notification.regionTriggersOnce = true
             UIApplication.sharedApplication().scheduleLocalNotification(notification)
             
-            self.tableView.reloadData()
+            println(notification.region)
+            println(currentRestaurant.center)
+            
+//            self.tableView.reloadData()
         }
         
         addAction.backgroundColor = UIColor.blueColor()

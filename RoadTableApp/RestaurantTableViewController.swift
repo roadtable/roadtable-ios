@@ -43,23 +43,9 @@ class RestaurantTableViewController: UITableViewController {
             var categories = restaurant["categories"]! as! String
             var id = restaurant["id"] as! String
             var image_url = restaurant["image_url"]! as! String
-            var restaurantObj = Restaurant(name: name, rating_img_url: rating_img_url, categories: categories, id: id, image_url: image_url)
+            var mobile_url = restaurant["mobile_url"] as! String
+            var restaurantObj = Restaurant(name: name, rating_img_url: rating_img_url, categories: categories, id: id, image_url: image_url, mobile_url: mobile_url)
             restaurantsCollection.append(restaurantObj)
-            dispatch_async(dispatch_get_main_queue()) {
-                self.tableView.reloadData()
-            }
-        }
-    }
-    
-    func loadRestaurantsList(restaurants:NSArray) {
-        for restaurant in restaurants {
-            var name = restaurant["name"]! as! String
-            var rating_img_url = restaurant["rating_img_url"]! as! String
-            var categories = restaurant["categories"]! as! String
-            var id = restaurant["id"] as! String
-            var image_url = restaurant["image_url"]! as! String
-            var restaurantObj = Restaurant(name: name, rating_img_url: rating_img_url, categories: categories, id: id, image_url: image_url)
-            restaurantsList.append(restaurantObj)
             dispatch_async(dispatch_get_main_queue()) {
                 self.tableView.reloadData()
             }
@@ -99,7 +85,14 @@ class RestaurantTableViewController: UITableViewController {
         return cell
     }
     
+    // Click goes to Yelp
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let restaurant = restaurantsCollection[indexPath.row]
+        let url = NSURL(string: restaurant.mobile_url)!
+        UIApplication.sharedApplication().openURL(url)
+    }
     
+    // Swipe
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
     }
     
@@ -110,11 +103,10 @@ class RestaurantTableViewController: UITableViewController {
             let firstActivityItem = self.restaurantsCollection[indexPath.row]
             
             self.service.addRestaurantToList(firstActivityItem.id)
-            
+            self.tableView.reloadData()
         }
         
         addAction.backgroundColor = UIColor.blueColor()
-        
         return [addAction]
     }
     

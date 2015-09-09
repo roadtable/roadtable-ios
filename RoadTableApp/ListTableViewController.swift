@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreLocation
 
 class ListTableViewController: UITableViewController {
     // Mark: Properties
@@ -30,20 +31,27 @@ class ListTableViewController: UITableViewController {
         }
     }
     
-    //MARK Actions
+    // MARK: Actions
     @IBAction func restaurantTableViewCellSwiped(sender: UISwipeGestureRecognizer) {
     }
     
-    
+    // Create Restaurant objects from API data
     func loadRestaurantsList(list:NSArray) {
         for restaurant in list {
+            // Set variables for Restaurant object
             var name = restaurant["name"]! as! String
             var rating_img_url = restaurant["rating_img_url"]! as! String
             var categories = restaurant["categories"]! as! String
             var id = restaurant["id"] as! String
             var image_url = restaurant["image_url"]! as! String
             var mobile_url = restaurant["mobile_url"] as! String
-            var restaurantObj = Restaurant(name: name, rating_img_url: rating_img_url, categories: categories, id: id, image_url: image_url, mobile_url: mobile_url)
+            var polypoint = restaurant["polypoint"] as! NSDictionary
+            var lat = polypoint["latitude"] as! CLLocationDegrees
+            var long = polypoint["longitude"] as! CLLocationDegrees
+            var center = CLLocationCoordinate2DMake(lat, long)
+            
+            // Create Restaurant object
+            var restaurantObj = Restaurant(name: name, rating_img_url: rating_img_url, categories: categories, id: id, image_url: image_url, mobile_url: mobile_url, center: center)
             restaurantsList.append(restaurantObj)
             dispatch_async(dispatch_get_main_queue()) {
                 self.tableView.reloadData()
@@ -67,47 +75,44 @@ class ListTableViewController: UITableViewController {
         return restaurantsList.count
     }
     
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         //Table view cells are reused and should be dequeed using a cell identifier
-        
         let cellIdentifier = "ListTableViewCell"
         
+        // Set each cell to tableViewCell
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ListTableViewCell
         
-        //Fetches the appropriate restaurant for the data source layout.
-        
+        // Fetches the appropriate restaurant for the data source layout.
         let restaurant = restaurantsList[indexPath.row]
         
+        // Set image URLs
         let restaurantImgURL = NSURL(string: restaurant.image_url)
         let restaurantRatingURL = NSURL(string: restaurant.rating_img_url)
         
+        // Download images
         self.service.downloadImage(restaurantImgURL!, imageView: cell.photoImageView)
         self.service.downloadImage(restaurantRatingURL!, imageView: cell.ratingImageView)
         
+        // Set text labels
         cell.nameLabel.text = restaurant.name
         cell.categoryLabel.text = restaurant.categories
         
         return cell
     }
     
-    
+    // Shows delete button
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        
     }
     
+    // Custom delete action
+    // Removes item from database, removes from restaurantsList, and reloads the table
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
-        
         var deleteAction = UITableViewRowAction(style: .Normal, title: "Delete") { (action:UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
-            
             let firstActivityItem = self.restaurantsList[indexPath.row]
-            
             self.service.deleteRestaurantToList(firstActivityItem.id)
             self.restaurantsList.removeAtIndex(indexPath.row)
             self.tableView.reloadData()
-            
         }
-        
         return [deleteAction]
     }
-}
+} // end ListTableViewController

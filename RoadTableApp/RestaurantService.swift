@@ -27,9 +27,9 @@ class RestaurantService {
         request("http://roadtable.herokuapp.com/sessions/view_list?api_key=\(self.shareData.apiKey)", callback: callback)
     }
     
+    // Makes a GET request for restaurants
     func request(url:String, callback:(NSDictionary) -> () ) {
         var nsURL = NSURL(string: url)
-        
         let task = NSURLSession.sharedSession().dataTaskWithURL(nsURL!) {
             (data, response, error) in
             var error:NSError?

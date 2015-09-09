@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class RestaurantTableViewController: UITableViewController {
     // Mark: Properties
@@ -28,6 +29,7 @@ class RestaurantTableViewController: UITableViewController {
             (response) in
             self.loadRestaurants(response["restaurants"]! as! NSArray)
         }
+        activityIndicatorView.stopAnimating()
     }
     
     //MARK Actions
@@ -38,14 +40,24 @@ class RestaurantTableViewController: UITableViewController {
     
     func loadRestaurants(restaurants:NSArray) {
         for restaurant in restaurants {
+            // Set variables for Restaurant object
             var name = restaurant["name"]! as! String
             var rating_img_url = restaurant["rating_img_url"]! as! String
             var categories = restaurant["categories"]! as! String
             var id = restaurant["id"] as! String
             var image_url = restaurant["image_url"]! as! String
             var mobile_url = restaurant["mobile_url"] as! String
-            var restaurantObj = Restaurant(name: name, rating_img_url: rating_img_url, categories: categories, id: id, image_url: image_url, mobile_url: mobile_url)
+            var polypoint = restaurant["polypoint"] as! NSDictionary
+            var lat = polypoint["latitude"] as! CLLocationDegrees
+            var long = polypoint["longitude"] as! CLLocationDegrees
+
+            var center = CLLocationCoordinate2DMake(lat, long)
+            
+            // Create Restaurant object
+            var restaurantObj = Restaurant(name: name, rating_img_url: rating_img_url, categories: categories, id: id, image_url: image_url, mobile_url: mobile_url, center: center)
             restaurantsCollection.append(restaurantObj)
+            
+            // Reload on main thread
             dispatch_async(dispatch_get_main_queue()) {
                 self.tableView.reloadData()
             }
@@ -92,17 +104,28 @@ class RestaurantTableViewController: UITableViewController {
         UIApplication.sharedApplication().openURL(url)
     }
     
-    // Swipe
+    // Shows button
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
     }
     
+    // Creates an add button
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
     
         var addAction = UITableViewRowAction(style: .Normal, title: "Add") { (action:UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
-        
-            let firstActivityItem = self.restaurantsCollection[indexPath.row]
             
-            self.service.addRestaurantToList(firstActivityItem.id)
+            // Set restaurant
+            let currentRestaurant = self.restaurantsCollection[indexPath.row]
+            
+            // Add items to database list
+            self.service.addRestaurantToList(currentRestaurant.id)
+            
+            // Create notification for restaurant
+            let notification = UILocalNotification()
+            notification.alertBody = "You're almost to \(currentRestaurant.name)"
+            notification.region = CLCircularRegion(center: currentRestaurant.center, radius: 16093, identifier: currentRestaurant.id)
+            notification.regionTriggersOnce = true
+            UIApplication.sharedApplication().scheduleLocalNotification(notification)
+            
             self.tableView.reloadData()
         }
         

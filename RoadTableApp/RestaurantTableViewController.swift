@@ -126,6 +126,9 @@ class RestaurantTableViewController: UITableViewController {
             notification.regionTriggersOnce = true
             UIApplication.sharedApplication().scheduleLocalNotification(notification)
             
+            println(notification.region)
+            println(currentRestaurant.center)
+            
             self.tableView.reloadData()
         }
         

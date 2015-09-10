@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C244F041BA1E11C00E8F008 /* SwiftSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C244F031BA1E11C00E8F008 /* SwiftSpinner.swift */; };
 		3C31F8911B97888C003B6345 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C31F8901B97888C003B6345 /* AppDelegate.swift */; };
 		3C31F8931B97888C003B6345 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C31F8921B97888C003B6345 /* ViewController.swift */; };
 		3C31F8961B97888C003B6345 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C31F8941B97888C003B6345 /* Main.storyboard */; };
@@ -17,7 +18,6 @@
 		3C31F8C61B979009003B6345 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C31F8BE1B978FCE003B6345 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3C31F8CB1B979053003B6345 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C31F8CA1B979053003B6345 /* SwiftyJSON.swift */; };
 		3C9CEBEE1B9A1AF1001DCAC4 /* ShareData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9CEBED1B9A1AF1001DCAC4 /* ShareData.swift */; };
-		3CDED51C1B9F869800FEF401 /* IronYardCoordinates.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 3CDED51B1B9F869800FEF401 /* IronYardCoordinates.gpx */; };
 		E3403C011B99316D0088C4D5 /* RestaurantService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3403C001B99316D0088C4D5 /* RestaurantService.swift */; };
 		E3403C061B9931910088C4D5 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3403C051B9931910088C4D5 /* Settings.swift */; };
 		E399BA851B9E238B00F793B1 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E399BA841B9E238B00F793B1 /* ListTableViewController.swift */; };
@@ -87,6 +87,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3C244F031BA1E11C00E8F008 /* SwiftSpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSpinner.swift; sourceTree = "<group>"; };
 		3C31F88B1B97888C003B6345 /* RoadTableApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoadTableApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C31F88F1B97888C003B6345 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C31F8901B97888C003B6345 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -100,7 +101,6 @@
 		3C31F8B61B978FCE003B6345 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		3C31F8CA1B979053003B6345 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		3C9CEBED1B9A1AF1001DCAC4 /* ShareData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareData.swift; sourceTree = "<group>"; };
-		3CDED51B1B9F869800FEF401 /* IronYardCoordinates.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = IronYardCoordinates.gpx; sourceTree = "<group>"; };
 		E3403C001B99316D0088C4D5 /* RestaurantService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantService.swift; sourceTree = "<group>"; };
 		E3403C051B9931910088C4D5 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		E399BA841B9E238B00F793B1 /* ListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
@@ -132,7 +132,6 @@
 		3C31F8821B97888C003B6345 = {
 			isa = PBXGroup;
 			children = (
-				3CDED51B1B9F869800FEF401 /* IronYardCoordinates.gpx */,
 				3C31F8B61B978FCE003B6345 /* Alamofire.xcodeproj */,
 				3C31F88D1B97888C003B6345 /* RoadTableApp */,
 				3C31F8A31B97888C003B6345 /* RoadTableAppTests */,
@@ -153,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				3C31F8CA1B979053003B6345 /* SwiftyJSON.swift */,
+				3C244F031BA1E11C00E8F008 /* SwiftSpinner.swift */,
 				3C31F8901B97888C003B6345 /* AppDelegate.swift */,
 				3C31F8921B97888C003B6345 /* ViewController.swift */,
 				E3D4028E1B98A0E00080FD2A /* RestaurantTableViewController.swift */,
@@ -253,6 +253,7 @@
 		3C31F8831B97888C003B6345 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = theironyard;
 				TargetAttributes = {
@@ -329,7 +330,6 @@
 				3C31F8961B97888C003B6345 /* Main.storyboard in Resources */,
 				3C31F89B1B97888C003B6345 /* LaunchScreen.xib in Resources */,
 				3C31F8981B97888C003B6345 /* Images.xcassets in Resources */,
-				3CDED51C1B9F869800FEF401 /* IronYardCoordinates.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,6 +352,7 @@
 				E3D4028F1B98A0E00080FD2A /* RestaurantTableViewController.swift in Sources */,
 				E3D402911B98AA200080FD2A /* Restaurant.swift in Sources */,
 				E399BA851B9E238B00F793B1 /* ListTableViewController.swift in Sources */,
+				3C244F041BA1E11C00E8F008 /* SwiftSpinner.swift in Sources */,
 				E3403C011B99316D0088C4D5 /* RestaurantService.swift in Sources */,
 				3C31F8CB1B979053003B6345 /* SwiftyJSON.swift in Sources */,
 				3C9CEBEE1B9A1AF1001DCAC4 /* ShareData.swift in Sources */,
@@ -489,6 +490,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = RoadTableApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -500,6 +502,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = RoadTableApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

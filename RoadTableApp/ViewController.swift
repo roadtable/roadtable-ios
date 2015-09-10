@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     // Mark: Properties
     @IBOutlet weak var startTextField: UITextField!
     @IBOutlet weak var endTextField: UITextField!
+    @IBOutlet weak var logoImageView: UIImageView!
     
     var service:RestaurantService!
     let shareData = ShareData.sharedInstance

@@ -9,7 +9,7 @@
         <!--ViewController-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController storyboardIdentifier="ViewController" title="ViewController" id="vXZ-lx-hvc" customClass="ViewController" customModule="RoadTableApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="New Route" title="ViewController" id="vXZ-lx-hvc" customClass="ViewController" customModule="RoadTableApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -41,16 +41,6 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwq-Qr-xMe">
-                                <rect key="frame" x="264" y="295" width="73" height="30"/>
-                                <state key="normal" title="Get Tables">
-                                    <color key="titleColor" red="0.93797536375661372" green="0.76735165424024465" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="getTablesButtonClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="wWo-Bw-Qkf"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="End" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5VF-ti-1I3">
                                 <rect key="frame" x="269" y="210" width="62" height="21"/>
                                 <constraints>
@@ -61,6 +51,16 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwq-Qr-xMe">
+                                <rect key="frame" x="199" y="324" width="203" height="50"/>
+                                <state key="normal" title="Find Restaurants">
+                                    <color key="titleColor" red="0.93797536375661372" green="0.76735165424024465" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="getTablesButtonClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="wWo-Bw-Qkf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.19047619047619047" green="0.19047619047619047" blue="0.19047619047619047" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -95,11 +95,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <activityIndicatorView key="tableFooterView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" id="J35-K3-c3w">
-                            <rect key="frame" x="0.0" y="122" width="600" height="37"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        </activityIndicatorView>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="RestaurantTableViewCell" rowHeight="100" id="0Wl-A1-Tla" customClass="RestaurantTableViewCell" customModule="RoadTableApp" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -186,22 +181,19 @@
                             <outlet property="delegate" destination="DBH-9c-1ZB" id="bX6-tp-Q9t"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="aDM-k1-krd">
+                    <navigationItem key="navigationItem" title="Available Restaurants" id="aDM-k1-krd">
                         <barButtonItem key="leftBarButtonItem" title="New Route" id="bPL-El-xFR">
                             <connections>
                                 <segue destination="vXZ-lx-hvc" kind="show" id="yP5-CQ-jqo"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Upcoming Stops" id="Wsd-Y5-Z7I">
+                        <barButtonItem key="rightBarButtonItem" title="Stops" id="Wsd-Y5-Z7I">
                             <connections>
                                 <action selector="upcomingStopsButtonClicked:" destination="DBH-9c-1ZB" id="r47-5l-YCC"/>
                                 <segue destination="ya7-cd-qFX" kind="show" id="Nfl-ym-CZT"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="activityIndicatorView" destination="J35-K3-c3w" id="H9s-Z4-JLi"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n0n-HO-cE7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="right" id="2Hr-hA-oXv">
@@ -230,10 +222,10 @@
             </objects>
             <point key="canvasLocation" x="1349" y="-166"/>
         </scene>
-        <!--ListTableViewController-->
+        <!--Upcoming Stops-->
         <scene sceneID="or2-Of-BA8">
             <objects>
-                <tableViewController storyboardIdentifier="ListTableViewController" title="ListTableViewController" id="ya7-cd-qFX" customClass="ListTableViewController" customModule="RoadTableApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ListTableViewController" title="Upcoming Stops" id="ya7-cd-qFX" customClass="ListTableViewController" customModule="RoadTableApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="22" sectionFooterHeight="22" id="j5h-BO-0bG" customClass="ListTableView">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -282,7 +274,7 @@
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                         </button>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="HTV-vm-YOT">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="HTV-vm-YOT">
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="HTV-vm-YOT" secondAttribute="height" multiplier="1:1" id="Bue-5Q-VTd"/>

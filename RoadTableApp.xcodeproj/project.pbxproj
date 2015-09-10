@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C244F041BA1E11C00E8F008 /* SwiftSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C244F031BA1E11C00E8F008 /* SwiftSpinner.swift */; };
 		3C31F8911B97888C003B6345 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C31F8901B97888C003B6345 /* AppDelegate.swift */; };
 		3C31F8931B97888C003B6345 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C31F8921B97888C003B6345 /* ViewController.swift */; };
 		3C31F8961B97888C003B6345 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C31F8941B97888C003B6345 /* Main.storyboard */; };
@@ -86,6 +87,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3C244F031BA1E11C00E8F008 /* SwiftSpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSpinner.swift; sourceTree = "<group>"; };
 		3C31F88B1B97888C003B6345 /* RoadTableApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoadTableApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C31F88F1B97888C003B6345 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C31F8901B97888C003B6345 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				3C31F8CA1B979053003B6345 /* SwiftyJSON.swift */,
+				3C244F031BA1E11C00E8F008 /* SwiftSpinner.swift */,
 				3C31F8901B97888C003B6345 /* AppDelegate.swift */,
 				3C31F8921B97888C003B6345 /* ViewController.swift */,
 				E3D4028E1B98A0E00080FD2A /* RestaurantTableViewController.swift */,
@@ -349,6 +352,7 @@
 				E3D4028F1B98A0E00080FD2A /* RestaurantTableViewController.swift in Sources */,
 				E3D402911B98AA200080FD2A /* Restaurant.swift in Sources */,
 				E399BA851B9E238B00F793B1 /* ListTableViewController.swift in Sources */,
+				3C244F041BA1E11C00E8F008 /* SwiftSpinner.swift in Sources */,
 				E3403C011B99316D0088C4D5 /* RestaurantService.swift in Sources */,
 				3C31F8CB1B979053003B6345 /* SwiftyJSON.swift in Sources */,
 				3C9CEBEE1B9A1AF1001DCAC4 /* ShareData.swift in Sources */,

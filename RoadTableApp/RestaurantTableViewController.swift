@@ -12,6 +12,8 @@ import CoreLocation
 class RestaurantTableViewController: UITableViewController {
     // Mark: Properties
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var loadingLabel: UILabel!
+    @IBOutlet weak var loadingView: UIView!
     
 
     var restaurantsCollection = [Restaurant]()
@@ -21,15 +23,15 @@ class RestaurantTableViewController: UITableViewController {
     let shareData = ShareData.sharedInstance
     
     override func viewDidLoad() {
-        activityIndicatorView.startAnimating()
+        SwiftSpinner.show("Pondering the meaning of life...", animated: true)
         println(self.shareData.apiKey)
         super.viewDidLoad()
         service = RestaurantService()
         service.getRestaurants {
             (response) in
             self.loadRestaurants(response["restaurants"]! as! NSArray)
+            SwiftSpinner.hide()
         }
-        activityIndicatorView.stopAnimating()
     }
     
     //MARK Actions

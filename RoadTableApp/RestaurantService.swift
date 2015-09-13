@@ -19,21 +19,23 @@ class RestaurantService {
         self.settings = Settings()
     }
     
-    func getRestaurants(callback:(NSDictionary) -> ()) {
+    //Calls routes#show
+    func getRestaurants(callback:(NSArray) -> ()) {
+        request("http://roadtable.herokuapp.com/routes?api_key=\(self.shareData.apiKey)", callback: callback)
+    }
+    
+    //Calls sessions#show
+    func getList(callback:(NSArray) -> ()) {
         request("http://roadtable.herokuapp.com/sessions?api_key=\(self.shareData.apiKey)", callback: callback)
     }
     
-    func getList(callback:(NSDictionary) -> ()) {
-        request("http://roadtable.herokuapp.com/sessions/view_list?api_key=\(self.shareData.apiKey)", callback: callback)
-    }
-    
     // Makes a GET request for restaurants
-    func request(url:String, callback:(NSDictionary) -> () ) {
+    func request(url:String, callback:(NSArray) -> () ) {
         var nsURL = NSURL(string: url)
         let task = NSURLSession.sharedSession().dataTaskWithURL(nsURL!) {
             (data, response, error) in
             var error:NSError?
-            var response = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &error) as! NSDictionary
+            var response = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &error) as! NSArray
             callback(response)
         }
         task.resume()
@@ -71,7 +73,7 @@ class RestaurantService {
     } // end createSession()
     
     func addRestaurantToList(id: String) {
-        Alamofire.request(.POST, "http://roadtable.herokuapp.com/sessions/add_to_list", parameters: ["id":"\(id)", "api_key":"\(self.shareData.apiKey)"], encoding: .JSON)
+        Alamofire.request(.PATCH, "http://roadtable.herokuapp.com/sessions/update", parameters: ["akushon":"add" , "yelp_id":"\(id)", "api_key":"\(self.shareData.apiKey)"], encoding: .JSON)
             .responseJSON { (request, response, data, error) in
                 if let anError = error {
                     // got an error in getting the data, need to handle it
@@ -87,7 +89,7 @@ class RestaurantService {
     }// end addRestaurantToList()
     
     func deleteRestaurantToList(id: String) {
-        Alamofire.request(.POST, "http://roadtable.herokuapp.com/sessions/remove_from_list", parameters: ["id":"\(id)", "api_key":"\(self.shareData.apiKey)"], encoding: .JSON)
+        Alamofire.request(.PATCH, "http://roadtable.herokuapp.com/sessions/update", parameters: ["akushon":"delete", "yelp_id":"\(id)", "api_key":"\(self.shareData.apiKey)"], encoding: .JSON)
             .responseJSON { (request, response, data, error) in
                 if let anError = error {
                     // got an error in getting the data, need to handle it

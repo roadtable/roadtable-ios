@@ -29,7 +29,7 @@ class RestaurantTableViewController: UITableViewController {
         service = RestaurantService()
         service.getRestaurants {
             (response) in
-            self.loadRestaurants(response["restaurants"]! as! NSArray)
+            self.loadRestaurants(response as NSArray)
             SwiftSpinner.hide()
         }
     }
@@ -46,12 +46,12 @@ class RestaurantTableViewController: UITableViewController {
             var name = restaurant["name"]! as! String
             var rating_img_url = restaurant["rating_img_url"]! as! String
             var categories = restaurant["categories"]! as! String
-            var id = restaurant["id"] as! String
+            var id = restaurant["yelp_id"] as! String
             var image_url = restaurant["image_url"]! as! String
             var mobile_url = restaurant["mobile_url"] as! String
-            var polypoint = restaurant["polypoint"] as! NSDictionary
-            var lat = polypoint["latitude"] as! CLLocationDegrees
-            var long = polypoint["longitude"] as! CLLocationDegrees
+            var alert_point = restaurant["alert_point"] as! NSDictionary
+            var lat = alert_point["latitude"] as! CLLocationDegrees
+            var long = alert_point["longitude"] as! CLLocationDegrees
 
             var center = CLLocationCoordinate2DMake(lat, long)
             

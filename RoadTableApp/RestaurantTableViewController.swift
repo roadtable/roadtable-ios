@@ -52,13 +52,14 @@ class RestaurantTableViewController: UITableViewController {
             var image_url = restaurant["image_url"]! as! String
             var mobile_url = restaurant["mobile_url"] as! String
             var alert_point = restaurant["alert_point"] as! NSDictionary
+            var address = restaurant["address"] as! String
             var lat = alert_point["latitude"] as! CLLocationDegrees
             var long = alert_point["longitude"] as! CLLocationDegrees
 
             var center = CLLocationCoordinate2DMake(lat, long)
             
             // Create Restaurant object
-            var restaurantObj = Restaurant(name: name, rating_img_url: rating_img_url, categories: categories, id: id, image_url: image_url, mobile_url: mobile_url, center: center, alert_point: alert_point)
+            var restaurantObj = Restaurant(name: name, rating_img_url: rating_img_url, categories: categories, id: id, image_url: image_url, mobile_url: mobile_url, center: center, alert_point: alert_point, address: address)
             restaurantsCollection.append(restaurantObj)
             
             // Reload on main thread
@@ -103,15 +104,20 @@ class RestaurantTableViewController: UITableViewController {
     
     // Notification action calls google maps
     func routeToGoogleMaps(notification: NSNotification) {
-        let userInfo = notification.userInfo
-        let lat = userInfo["latitude"]
-        let long = userInfo["longitude"]
+        let address = notification.userInfo?["address"]
+
         if (UIApplication.sharedApplication().canOpenURL(NSURL(string:"comgooglemaps://")!)) {
             UIApplication.sharedApplication().openURL(NSURL(string:
-                "comgooglemaps://?saddr=&daddr=\(lat),\(long)&directionsmode=driving")!)
+                "comgooglemaps://?saddr=&daddr=\(address)&directionsmode=driving")!)
             
         } else {
             NSLog("Can't use comgooglemaps://");
+            let url = NSURL(string: "https://maps.google.com?saddr=Current+Location&daddr=\(address)")!
+            println("address stuff is next")
+            println(address)
+            println(url)
+            UIApplication.sharedApplication().openURL(url)
+            
         }
     }
 
@@ -134,9 +140,7 @@ class RestaurantTableViewController: UITableViewController {
             
             // Set restaurant
             let currentRestaurant = self.restaurantsCollection[indexPath.row]
-            let point = currentRestaurant.alert_point
-            let lat = currentRestaurant.alert_point["latitude"] as! NSString
-            let long = currentRestaurant.alert_point["longitude"] as! NSString
+            let address = currentRestaurant.address
             
             // Add items to database list
             self.service.addRestaurantToList(currentRestaurant.id)
@@ -147,7 +151,7 @@ class RestaurantTableViewController: UITableViewController {
             notification.category = "routeCategory"
             notification.region = CLCircularRegion(center: currentRestaurant.center, radius: 16093, identifier: currentRestaurant.id)
             notification.regionTriggersOnce = true
-            notification.userInfo = ["latitude": lat, "longitude": long]
+            notification.userInfo = ["address": address]
             UIApplication.sharedApplication().scheduleLocalNotification(notification)
             
             println(notification.region)

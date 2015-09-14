@@ -46,12 +46,13 @@ class ListTableViewController: UITableViewController {
             var image_url = restaurant["image_url"]! as! String
             var mobile_url = restaurant["mobile_url"] as! String
             var alert_point = restaurant["alert_point"] as! NSDictionary
+            var address = restaurant["address"] as! String
             var lat = alert_point["latitude"] as! CLLocationDegrees
             var long = alert_point["longitude"] as! CLLocationDegrees
             var center = CLLocationCoordinate2DMake(lat, long)
             
             // Create Restaurant object
-            var restaurantObj = Restaurant(name: name, rating_img_url: rating_img_url, categories: categories, id: id, image_url: image_url, mobile_url: mobile_url, center: center)
+            var restaurantObj = Restaurant(name: name, rating_img_url: rating_img_url, categories: categories, id: id, image_url: image_url, mobile_url: mobile_url, center: center, alert_point: alert_point, address: address)
             restaurantsList.append(restaurantObj)
             dispatch_async(dispatch_get_main_queue()) {
                 self.tableView.reloadData()

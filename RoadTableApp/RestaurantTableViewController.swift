@@ -23,9 +23,11 @@ class RestaurantTableViewController: UITableViewController {
     let shareData = ShareData.sharedInstance
     
     override func viewDidLoad() {
-        SwiftSpinner.show("Pondering the meaning of life...", animated: true)
-        println(self.shareData.apiKey)
         super.viewDidLoad()
+        SwiftSpinner.show("Pondering the meaning of life...", animated: true)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "routeToGoogleMaps:", name: "routeToPressed", object: nil)
+        
         service = RestaurantService()
         service.getRestaurants {
             (response) in
@@ -50,13 +52,14 @@ class RestaurantTableViewController: UITableViewController {
             var image_url = restaurant["image_url"]! as! String
             var mobile_url = restaurant["mobile_url"] as! String
             var alert_point = restaurant["alert_point"] as! NSDictionary
+            var address = restaurant["address"] as! String
             var lat = alert_point["latitude"] as! CLLocationDegrees
             var long = alert_point["longitude"] as! CLLocationDegrees
 
             var center = CLLocationCoordinate2DMake(lat, long)
             
             // Create Restaurant object
-            var restaurantObj = Restaurant(name: name, rating_img_url: rating_img_url, categories: categories, id: id, image_url: image_url, mobile_url: mobile_url, center: center)
+            var restaurantObj = Restaurant(name: name, rating_img_url: rating_img_url, categories: categories, id: id, image_url: image_url, mobile_url: mobile_url, center: center, alert_point: alert_point, address: address)
             restaurantsCollection.append(restaurantObj)
             
             // Reload on main thread
@@ -99,6 +102,27 @@ class RestaurantTableViewController: UITableViewController {
         return cell
     }
     
+    // Notification action calls google maps
+    func routeToGoogleMaps(notification: NSNotification) {
+        let userInfo:NSDictionary! = notification.userInfo
+        let addressForGoogle:String! = userInfo?["address"] as! String
+        
+        if (UIApplication.sharedApplication().canOpenURL(NSURL(string:"comgooglemaps://")!)) {
+            UIApplication.sharedApplication().openURL(NSURL(string:
+                "comgooglemaps://?saddr=&daddr=\(addressForGoogle!)&directionsmode=driving")!)
+            
+        } else {
+            NSLog("Can't use comgooglemaps://");
+            
+            var url = NSURL(string: "https://maps.google.com?saddr=Current+Location&daddr=\(addressForGoogle)")!
+            println("address stuff is next")
+            println(addressForGoogle)
+            println(url)
+            UIApplication.sharedApplication().openURL(url)
+        }
+    }
+
+    
     // Click goes to Yelp
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let restaurant = restaurantsCollection[indexPath.row]
@@ -117,6 +141,7 @@ class RestaurantTableViewController: UITableViewController {
             
             // Set restaurant
             let currentRestaurant = self.restaurantsCollection[indexPath.row]
+            let address = currentRestaurant.address as NSString
             
             // Add items to database list
             self.service.addRestaurantToList(currentRestaurant.id)
@@ -124,8 +149,10 @@ class RestaurantTableViewController: UITableViewController {
             // Create notification for restaurant
             let notification = UILocalNotification()
             notification.alertBody = "You're almost to \(currentRestaurant.name)"
+            notification.category = "routeCategory"
             notification.region = CLCircularRegion(center: currentRestaurant.center, radius: 16093, identifier: currentRestaurant.id)
             notification.regionTriggersOnce = true
+            notification.userInfo = ["address": address]
             UIApplication.sharedApplication().scheduleLocalNotification(notification)
             
             println(notification.region)
@@ -137,60 +164,4 @@ class RestaurantTableViewController: UITableViewController {
         addAction.backgroundColor = UIColor.blueColor()
         return [addAction]
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -20,13 +20,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         
-        // Request permission to send notifications
-        let notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert, categories: nil)
+        // Notification actions
+        let toGoogleMapsAction = UIMutableUserNotificationAction()
+        toGoogleMapsAction.identifier = "routeTo"
+        toGoogleMapsAction.title = "Take me there!"
+        toGoogleMapsAction.activationMode = UIUserNotificationActivationMode.Background
+        toGoogleMapsAction.destructive = true
+        toGoogleMapsAction.authenticationRequired = false
+        
+        let cancelUpcomingStopAction = UIMutableUserNotificationAction()
+        cancelUpcomingStopAction.identifier = "cancelStop"
+        cancelUpcomingStopAction.title = "Skip"
+        cancelUpcomingStopAction.activationMode = UIUserNotificationActivationMode.Background
+        cancelUpcomingStopAction.destructive = true
+        cancelUpcomingStopAction.authenticationRequired = false
+        
+        // Category
+        let routeNotificationCategory = UIMutableUserNotificationCategory()
+        routeNotificationCategory.identifier = "routeCategory"
+        routeNotificationCategory.setActions([toGoogleMapsAction, cancelUpcomingStopAction], forContext: UIUserNotificationActionContext.Default)
+        routeNotificationCategory.setActions([toGoogleMapsAction, cancelUpcomingStopAction], forContext: UIUserNotificationActionContext.Minimal)
+        
+        // Request permission to send notifications and register settings
+        let notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert | UIUserNotificationType.Sound | UIUserNotificationType.Badge, categories: Set(arrayLiteral: routeNotificationCategory))
         UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+        
         return true
     }
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+    }
+    
+    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
+        let address = notification.userInfo?["address"] as! NSString
+        if identifier == "routeTo" {
+            NSNotificationCenter.defaultCenter().postNotificationName("routeToPressed", object: nil, userInfo: ["address": address])
+        } else if identifier == "cancelStop" {
+            NSNotificationCenter.defaultCenter().postNotificationName("cancelStopPressed", object: nil)
+        }
+        completionHandler()
     }
 
     func applicationWillResignActive(application: UIApplication) {

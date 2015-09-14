@@ -23,9 +23,11 @@ class RestaurantTableViewController: UITableViewController {
     let shareData = ShareData.sharedInstance
     
     override func viewDidLoad() {
-        SwiftSpinner.show("Pondering the meaning of life...", animated: true)
-        println(self.shareData.apiKey)
         super.viewDidLoad()
+        SwiftSpinner.show("Pondering the meaning of life...", animated: true)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "routeToGoogleMaps:", name: "routeToPressed", object: nil)
+        
         service = RestaurantService()
         service.getRestaurants {
             (response) in
@@ -56,7 +58,7 @@ class RestaurantTableViewController: UITableViewController {
             var center = CLLocationCoordinate2DMake(lat, long)
             
             // Create Restaurant object
-            var restaurantObj = Restaurant(name: name, rating_img_url: rating_img_url, categories: categories, id: id, image_url: image_url, mobile_url: mobile_url, center: center)
+            var restaurantObj = Restaurant(name: name, rating_img_url: rating_img_url, categories: categories, id: id, image_url: image_url, mobile_url: mobile_url, center: center, alert_point: alert_point)
             restaurantsCollection.append(restaurantObj)
             
             // Reload on main thread
@@ -99,6 +101,21 @@ class RestaurantTableViewController: UITableViewController {
         return cell
     }
     
+    // Notification action calls google maps
+    func routeToGoogleMaps(notification: NSNotification) {
+        let userInfo = notification.userInfo
+        let lat = userInfo["latitude"]
+        let long = userInfo["longitude"]
+        if (UIApplication.sharedApplication().canOpenURL(NSURL(string:"comgooglemaps://")!)) {
+            UIApplication.sharedApplication().openURL(NSURL(string:
+                "comgooglemaps://?saddr=&daddr=\(lat),\(long)&directionsmode=driving")!)
+            
+        } else {
+            NSLog("Can't use comgooglemaps://");
+        }
+    }
+
+    
     // Click goes to Yelp
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let restaurant = restaurantsCollection[indexPath.row]
@@ -117,6 +134,9 @@ class RestaurantTableViewController: UITableViewController {
             
             // Set restaurant
             let currentRestaurant = self.restaurantsCollection[indexPath.row]
+            let point = currentRestaurant.alert_point
+            let lat = currentRestaurant.alert_point["latitude"] as! NSString
+            let long = currentRestaurant.alert_point["longitude"] as! NSString
             
             // Add items to database list
             self.service.addRestaurantToList(currentRestaurant.id)
@@ -124,8 +144,10 @@ class RestaurantTableViewController: UITableViewController {
             // Create notification for restaurant
             let notification = UILocalNotification()
             notification.alertBody = "You're almost to \(currentRestaurant.name)"
+            notification.category = "routeCategory"
             notification.region = CLCircularRegion(center: currentRestaurant.center, radius: 16093, identifier: currentRestaurant.id)
             notification.regionTriggersOnce = true
+            notification.userInfo = ["latitude": lat, "longitude": long]
             UIApplication.sharedApplication().scheduleLocalNotification(notification)
             
             println(notification.region)

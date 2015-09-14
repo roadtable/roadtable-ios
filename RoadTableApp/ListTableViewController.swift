@@ -51,7 +51,7 @@ class ListTableViewController: UITableViewController {
             var center = CLLocationCoordinate2DMake(lat, long)
             
             // Create Restaurant object
-            var restaurantObj = Restaurant(name: name, rating_img_url: rating_img_url, categories: categories, id: id, image_url: image_url, mobile_url: mobile_url, center: center)
+            var restaurantObj = Restaurant(name: name, rating_img_url: rating_img_url, categories: categories, id: id, image_url: image_url, mobile_url: mobile_url, center: center, alert_point: alert_point)
             restaurantsList.append(restaurantObj)
             dispatch_async(dispatch_get_main_queue()) {
                 self.tableView.reloadData()

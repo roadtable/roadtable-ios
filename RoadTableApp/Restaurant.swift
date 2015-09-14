@@ -18,8 +18,9 @@ class Restaurant {
     var image_url : String
     var mobile_url : String
     var center: CLLocationCoordinate2D
+    var alert_point: NSDictionary
     
-    init(name:String, rating_img_url:String, categories:String, id:String, image_url:String, mobile_url:String, center: CLLocationCoordinate2D) {
+    init(name:String, rating_img_url:String, categories:String, id:String, image_url:String, mobile_url:String, center: CLLocationCoordinate2D, alert_point: NSDictionary) {
         self.name = name
         self.rating_img_url = rating_img_url
         self.categories = categories
@@ -27,6 +28,7 @@ class Restaurant {
         self.id = id
         self.mobile_url = mobile_url
         self.center = center
+        self.alert_point = alert_point
     }
 
 } // end Restaurant

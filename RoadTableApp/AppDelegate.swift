@@ -52,9 +52,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
+        let address = notification.userInfo?["address"] as! NSString
         if identifier == "routeTo" {
-            NSNotificationCenter.defaultCenter().postNotificationName("routeToPressed", object: nil)
-
+            NSNotificationCenter.defaultCenter().postNotificationName("routeToPressed", object: nil, userInfo: ["address": address])
         } else if identifier == "cancelStop" {
             NSNotificationCenter.defaultCenter().postNotificationName("cancelStopPressed", object: nil)
         }

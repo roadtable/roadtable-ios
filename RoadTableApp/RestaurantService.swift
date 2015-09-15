@@ -35,8 +35,14 @@ class RestaurantService {
         let task = NSURLSession.sharedSession().dataTaskWithURL(nsURL!) {
             (data, response, error) in
             var error:NSError?
-            var response = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &error) as! NSArray
-            callback(response)
+            var response_json:NSArray?
+            if error == nil {
+                response_json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray
+            } else if error != nil {
+                println("i was called")
+                response_json = []
+            }
+            callback(response_json)
         }
         task.resume()
     }
@@ -62,9 +68,10 @@ class RestaurantService {
         Alamofire.request(.POST, "http://roadtable.herokuapp.com/sessions", parameters: ["origin":"\(origin)", "destination":"\(destination)", "api_key":"\(self.shareData.apiKey)"], encoding: .JSON)
             .responseJSON { (request, response, data, error) in
                 if let anError = error {
-                    // got an error in getting the data, need to handle it
-                    println("error calling POST on /posts")
-                    println(error)
+
+                    SwiftSpinner.show("Invalid address.", animated: false).addTapHandler({
+                        SwiftSpinner.hide()
+                    })
                 } else if let data: AnyObject = data {
                     let session = JSON(data)
                     println(response)

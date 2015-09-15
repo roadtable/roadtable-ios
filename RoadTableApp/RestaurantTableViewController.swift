@@ -31,10 +31,26 @@ class RestaurantTableViewController: UITableViewController {
         service = RestaurantService()
         service.getRestaurants {
             (response) in
-            self.loadRestaurants(response as NSArray)
-            SwiftSpinner.hide()
+            if response == [] {
+                SwiftSpinner.hide(){
+                    SwiftSpinner.show("Invalid address", animated: false)
+                }
+                
+                self.delay(1.5) {
+                    self.performSegueWithIdentifier("routeView", sender: nil)
+                }
+            } else {
+                self.loadRestaurants(response as NSArray)
+                SwiftSpinner.hide()
+            }
+    
         }
     }
+    
+    func delay(delay:Double, closure:()->()) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), closure)
+    }
+    
     
     //MARK Actions
     @IBAction func restaurantTableViewCellSwiped(sender: UISwipeGestureRecognizer) {

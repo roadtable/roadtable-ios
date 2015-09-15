@@ -113,6 +113,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" restorationIdentifier="searchBar" id="6xE-rQ-69G">
+                            <rect key="frame" x="-15" y="-19" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="kda-Op-fBV" id="DLC-bE-96X"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="RestaurantTableViewCell" rowHeight="100" id="0Wl-A1-Tla" customClass="RestaurantTableViewCell" customModule="RoadTableApp" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -212,6 +220,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="restaurantSearchBar" destination="6xE-rQ-69G" id="0ej-hF-v5b"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n0n-HO-cE7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="right" id="2Hr-hA-oXv">

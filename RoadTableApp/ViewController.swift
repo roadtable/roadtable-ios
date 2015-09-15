@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        SwiftSpinner.hide()
     }
     
     // Mark: Actions
@@ -28,6 +29,7 @@ class ViewController: UIViewController {
         service = RestaurantService()
         self.shareData.apiKey = NSUUID().UUIDString
         service.createSession(startTextField.text, destination: endTextField.text)
+        
         performSegueWithIdentifier("nextView", sender: self)
 
     }

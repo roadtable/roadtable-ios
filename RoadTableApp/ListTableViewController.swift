@@ -14,9 +14,6 @@ class ListTableViewController: UITableViewController {
     // Mark: Properties
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
-    
-    var restaurantsList = [Restaurant]()
-    
     var service:RestaurantService!
     let shareData = ShareData.sharedInstance
     
@@ -53,7 +50,7 @@ class ListTableViewController: UITableViewController {
             
             // Create Restaurant object
             var restaurantObj = Restaurant(name: name, rating_img_url: rating_img_url, categories: categories, id: id, image_url: image_url, mobile_url: mobile_url, center: center, alert_point: alert_point, address: address)
-            restaurantsList.append(restaurantObj)
+            shareData.restaurantsList.append(restaurantObj)
             dispatch_async(dispatch_get_main_queue()) {
                 self.tableView.reloadData()
             }
@@ -62,7 +59,7 @@ class ListTableViewController: UITableViewController {
     
     // Click goes to Yelp
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let restaurant = restaurantsList[indexPath.row]
+        let restaurant = shareData.restaurantsList[indexPath.row]
         let url = NSURL(string: restaurant.mobile_url)!
         UIApplication.sharedApplication().openURL(url)
     }
@@ -73,7 +70,7 @@ class ListTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return restaurantsList.count
+        return shareData.restaurantsList.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -84,7 +81,7 @@ class ListTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ListTableViewCell
         
         // Fetches the appropriate restaurant for the data source layout.
-        let restaurant = restaurantsList[indexPath.row]
+        let restaurant = shareData.restaurantsList[indexPath.row]
         
         // Set image URLs
         let restaurantImgURL = NSURL(string: restaurant.image_url)
@@ -109,9 +106,9 @@ class ListTableViewController: UITableViewController {
     // Removes item from database, removes from restaurantsList, and reloads the table
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
         var deleteAction = UITableViewRowAction(style: .Normal, title: "Delete") { (action:UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
-            let firstActivityItem = self.restaurantsList[indexPath.row]
+            let firstActivityItem = self.shareData.restaurantsList[indexPath.row]
             self.service.deleteRestaurantToList(firstActivityItem.id)
-            self.restaurantsList.removeAtIndex(indexPath.row)
+            self.shareData.restaurantsList.removeAtIndex(indexPath.row)
             self.tableView.reloadData()
         }
         return [deleteAction]

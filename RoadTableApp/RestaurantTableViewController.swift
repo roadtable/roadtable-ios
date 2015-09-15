@@ -195,6 +195,13 @@ class RestaurantTableViewController: UITableViewController, UISearchBarDelegate,
             println(notification.region)
             println(currentRestaurant.center)
             
+            // Create alert message for restaurant
+            let alertController = UIAlertController(title: "Restaurant added to Stops!", message:
+                "\(currentRestaurant.name) was added to your upcoming stops. We'll remind you when you get close.", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+            self.presentViewController(alertController, animated: true, completion: nil)
+            
+            // Reload table data
             self.tableView.reloadData()
         }
         

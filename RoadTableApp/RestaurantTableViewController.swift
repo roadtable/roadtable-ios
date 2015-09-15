@@ -9,21 +9,24 @@
 import UIKit
 import CoreLocation
 
-class RestaurantTableViewController: UITableViewController {
+class RestaurantTableViewController: UITableViewController, UISearchBarDelegate, UISearchDisplayDelegate {
     // Mark: Properties
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var loadingLabel: UILabel!
     @IBOutlet weak var loadingView: UIView!
-    
-
+    @IBOutlet weak var restaurantSearchBar: UISearchBar!
+   
+    var searchActive : Bool = false
     var restaurantsCollection = [Restaurant]()
     var restaurantsList = [Restaurant]()
+    
     
     var service:RestaurantService!
     let shareData = ShareData.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        restaurantSearchBar.delegate = self
         SwiftSpinner.show("Pondering the meaning of life...", animated: true)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "routeToGoogleMaps:", name: "routeToPressed", object: nil)
@@ -39,8 +42,34 @@ class RestaurantTableViewController: UITableViewController {
     //MARK Actions
     @IBAction func restaurantTableViewCellSwiped(sender: UISwipeGestureRecognizer) {
     }
-
-
+    
+    
+    func searchBarTextDidBeginEditing(restaurantSearchBar: UISearchBar) {
+        searchActive = true;
+    }
+    
+    func searchBarTextDidEndEditing(restaurantSearchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBarCancelButtonClicked(restaurantSearchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBarSearchButtonClicked(restaurantSearchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBar(restaurantSearchBar: UISearchBar, textDidChange searchText: String) {
+        println("Search bar clicked!!!!")
+        self.restaurantsCollection.removeAll()
+        self.service.getFilteredRestaurants( searchText ) {
+            (response) in
+            self.loadRestaurants(response as NSArray)
+            SwiftSpinner.hide()
+        }
+        self.tableView.reloadData()
+    }
     
     func loadRestaurants(restaurants:NSArray) {
         for restaurant in restaurants {

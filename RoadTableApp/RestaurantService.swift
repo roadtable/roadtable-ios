@@ -36,13 +36,15 @@ class RestaurantService {
             (data, response, error) in
             var error:NSError?
             var response_json:NSArray?
+            
             if error == nil {
                 response_json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray
-            } else if error != nil {
+            }
+            if error != nil {
                 println("i was called")
                 response_json = []
             }
-            callback(response_json)
+            callback(response_json!)
         }
         task.resume()
     }

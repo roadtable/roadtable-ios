@@ -43,9 +43,11 @@ class RestaurantService {
             var response_json:NSArray?
             
             if error == nil {
+                println(error)
                 response_json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray
             }
             if error != nil {
+                println(error)
                 response_json = []
             }
             callback(response_json!)

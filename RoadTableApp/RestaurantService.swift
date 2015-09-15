@@ -19,22 +19,22 @@ class RestaurantService {
         self.settings = Settings()
     }
     
-    //Calls routes#show
+    // GET available restaurants // routes#show
     func getRestaurants(callback:(NSArray) -> ()) {
         request("http://roadtable.herokuapp.com/routes?api_key=\(self.shareData.apiKey)", callback: callback)
     }
     
-    //Calls routes#show for filter
+    // GET filtered available restaurants // routes#show with filter
     func getFilteredRestaurants(parameter:String, callback:(NSArray) -> ()) {
         request("http://roadtable.herokuapp.com/routes?api_key=\(self.shareData.apiKey)&filter=\(parameter)", callback: callback)
     }
     
-    //Calls sessions#show
+    // GET chosen restaurants // sessions#show
     func getList(callback:(NSArray) -> ()) {
         request("http://roadtable.herokuapp.com/sessions?api_key=\(self.shareData.apiKey)", callback: callback)
     }
     
-    // Makes a GET request for restaurants
+    // GET available restaurants
     func request(url:String, callback:(NSArray) -> () ) {
         var nsURL = NSURL(string: url)
         let task = NSURLSession.sharedSession().dataTaskWithURL(nsURL!) {
@@ -46,7 +46,6 @@ class RestaurantService {
                 response_json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray
             }
             if error != nil {
-                println("i was called")
                 response_json = []
             }
             callback(response_json!)
@@ -54,6 +53,8 @@ class RestaurantService {
         task.resume()
     }
     
+    
+    // Downloading images
     func getDataFromUrl(urL:NSURL, completion: ((data: NSData?) -> Void)) {
         NSURLSession.sharedSession().dataTaskWithURL(urL) { (data, response, error) in
             completion(data: data)
@@ -70,22 +71,16 @@ class RestaurantService {
         }
     }
     
-    
+    // Create a new API session
     func createSession(origin: String, destination: String) {
         Alamofire.request(.POST, "http://roadtable.herokuapp.com/sessions", parameters: ["origin":"\(origin)", "destination":"\(destination)", "api_key":"\(self.shareData.apiKey)"], encoding: .JSON)
             .responseJSON { (request, response, data, error) in
                 if let anError = error {
-
-                    SwiftSpinner.show("Invalid address.", animated: false).addTapHandler({
-                        SwiftSpinner.hide()
-                    })
-                } else if let data: AnyObject = data {
-                    let session = JSON(data)
-                    println(response)
-                }
-        }
-    } // end createSession()
+                    println(error)
+                }         }
+    }
     
+    // Add restaurant to API chosen list
     func addRestaurantToList(id: String) {
         Alamofire.request(.PATCH, "http://roadtable.herokuapp.com/sessions/update", parameters: ["akushon":"add" , "yelp_id":"\(id)", "api_key":"\(self.shareData.apiKey)"], encoding: .JSON)
             .responseJSON { (request, response, data, error) in
@@ -93,15 +88,12 @@ class RestaurantService {
                     // got an error in getting the data, need to handle it
                     println("error calling POST on /posts")
                     println(error)
-                } else if let data: AnyObject = data {
-                    let session = JSON(data)
-                    println(response)
                 }
-                println(self.shareData.apiKey)
         }
         
-    }// end addRestaurantToList()
+    }
     
+    // Remove restaurant from API chosen list
     func deleteRestaurantToList(id: String) {
         Alamofire.request(.PATCH, "http://roadtable.herokuapp.com/sessions/update", parameters: ["akushon":"delete", "yelp_id":"\(id)", "api_key":"\(self.shareData.apiKey)"], encoding: .JSON)
             .responseJSON { (request, response, data, error) in
@@ -109,13 +101,8 @@ class RestaurantService {
                     // got an error in getting the data, need to handle it
                     println("error calling POST on /posts")
                     println(error)
-                } else if let data: AnyObject = data {
-                    let session = JSON(data)
-                    println(response)
                 }
-                println(self.shareData.apiKey)
         }
         
-    }// end addRestaurantToList()
-    
+    }
 }

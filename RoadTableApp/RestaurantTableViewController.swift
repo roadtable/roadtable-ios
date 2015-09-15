@@ -28,9 +28,9 @@ class RestaurantTableViewController: UITableViewController, UISearchBarDelegate,
         super.viewDidLoad()
         restaurantSearchBar.delegate = self
         SwiftSpinner.show("Pondering the meaning of life...", animated: true)
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "routeToGoogleMaps:", name: "routeToPressed", object: nil)
         
+        // Load restaurants or show error page if data is invalid
         service = RestaurantService()
         service.getRestaurants {
             (response) in
@@ -38,7 +38,6 @@ class RestaurantTableViewController: UITableViewController, UISearchBarDelegate,
                 SwiftSpinner.hide(){
                     SwiftSpinner.show("Invalid address", animated: false)
                 }
-                
                 self.delay(1.5) {
                     self.performSegueWithIdentifier("routeView", sender: nil)
                 }
@@ -46,10 +45,10 @@ class RestaurantTableViewController: UITableViewController, UISearchBarDelegate,
                 self.loadRestaurants(response as NSArray)
                 SwiftSpinner.hide()
             }
-    
         }
     }
     
+    // Delay action
     func delay(delay:Double, closure:()->()) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), closure)
     }
@@ -76,8 +75,8 @@ class RestaurantTableViewController: UITableViewController, UISearchBarDelegate,
         searchActive = false;
     }
     
+    // Reload table with filtered results when text is entered
     func searchBar(restaurantSearchBar: UISearchBar, textDidChange searchText: String) {
-        println("Search bar clicked!!!!")
         self.restaurantsCollection.removeAll()
         self.service.getFilteredRestaurants( searchText ) {
             (response) in
@@ -87,6 +86,7 @@ class RestaurantTableViewController: UITableViewController, UISearchBarDelegate,
         self.tableView.reloadData()
     }
     
+    // Create restaurant objects from JSON
     func loadRestaurants(restaurants:NSArray) {
         for restaurant in restaurants {
             // Set variables for Restaurant object
@@ -125,40 +125,33 @@ class RestaurantTableViewController: UITableViewController, UISearchBarDelegate,
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        //Table view cells are reused and should be dequeed using a cell identifier
-        
+        // Set the cell and restuarant objects
         let cellIdentifier = "RestaurantTableViewCell"
-        
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! RestaurantTableViewCell
-        
-        //Fetches the appropriate restaurant for the data source layout.
-        
         let restaurant = restaurantsCollection[indexPath.row]
         
+        // Set images and text
         let restaurantImgURL = NSURL(string: restaurant.image_url)
         let restaurantRatingURL = NSURL(string: restaurant.rating_img_url)
-
         self.service.downloadImage(restaurantImgURL!, imageView: cell.photoImageView)
         self.service.downloadImage(restaurantRatingURL!, imageView: cell.ratingImageView)
-        
         cell.nameLabel.text = restaurant.name
         cell.categoryLabel.text = restaurant.categories
 
         return cell
     }
     
-    // Notification action calls google maps
+    // Opens google maps with location data entered
     func routeToGoogleMaps(notification: NSNotification) {
         let userInfo:NSDictionary! = notification.userInfo
         let addressForGoogle:String! = userInfo?["address"] as! String
-        
+        // Try to open Google Maps App
         if (UIApplication.sharedApplication().canOpenURL(NSURL(string:"comgooglemaps://")!)) {
             UIApplication.sharedApplication().openURL(NSURL(string:
                 "comgooglemaps://?saddr=&daddr=\(addressForGoogle!)&directionsmode=driving")!)
-            
+        // Open in browser
         } else {
             NSLog("Can't use comgooglemaps://");
-            
             var url = NSURL(string: "https://maps.google.com?saddr=Current+Location&daddr=\(addressForGoogle)")!
             println("address stuff is next")
             println(addressForGoogle)
@@ -167,7 +160,6 @@ class RestaurantTableViewController: UITableViewController, UISearchBarDelegate,
         }
     }
 
-    
     // Click goes to Yelp
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let restaurant = restaurantsCollection[indexPath.row]
@@ -179,7 +171,7 @@ class RestaurantTableViewController: UITableViewController, UISearchBarDelegate,
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
     }
     
-    // Creates an add button
+    // Creates a custom add button with location trigger
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
     
         var addAction = UITableViewRowAction(style: .Normal, title: "Add") { (action:UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in

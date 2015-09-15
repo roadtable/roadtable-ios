@@ -24,6 +24,11 @@ class RestaurantService {
         request("http://roadtable.herokuapp.com/routes?api_key=\(self.shareData.apiKey)", callback: callback)
     }
     
+    //Calls routes#show for filter
+    func getFilteredRestaurants(parameter:String, callback:(NSArray) -> ()) {
+        request("http://roadtable.herokuapp.com/routes?api_key=\(self.shareData.apiKey)&filter=\(parameter)", callback: callback)
+    }
+    
     //Calls sessions#show
     func getList(callback:(NSArray) -> ()) {
         request("http://roadtable.herokuapp.com/sessions?api_key=\(self.shareData.apiKey)", callback: callback)

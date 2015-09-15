@@ -21,8 +21,8 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IF1-QI-gkC">
                                 <rect key="frame" x="167" y="219" width="267" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="267" id="AWt-NE-t5j"/>
-                                    <constraint firstAttribute="height" constant="30" id="f7D-js-lwb"/>
+                                    <constraint firstAttribute="width" constant="267" id="YEn-QN-iac"/>
+                                    <constraint firstAttribute="height" constant="30" id="ibZ-MP-BRi"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -30,7 +30,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l5Z-PF-5sD">
                                 <rect key="frame" x="167" y="323" width="267" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="U48-xw-gCe"/>
+                                    <constraint firstAttribute="height" constant="30" id="3Vo-9F-Vmm"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -38,32 +38,18 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="37s-B9-uat">
                                 <rect key="frame" x="272" y="190" width="56" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="B37-1h-tG4"/>
-                                    <constraint firstAttribute="width" constant="56" id="KxW-Zl-nIM"/>
+                                    <constraint firstAttribute="width" constant="56" id="VZT-PW-kRH"/>
+                                    <constraint firstAttribute="height" constant="21" id="tak-8l-2Uy"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwq-Qr-xMe">
-                                <rect key="frame" x="199" y="382" width="203" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="203" id="8T0-MT-m7w"/>
-                                    <constraint firstAttribute="height" constant="50" id="beP-Gy-eGt"/>
-                                </constraints>
-                                <state key="normal" title="Find Restaurants">
-                                    <color key="titleColor" red="0.93797536375661372" green="0.76735165424024465" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="getTablesButtonClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="wWo-Bw-Qkf"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5VF-ti-1I3">
                                 <rect key="frame" x="269" y="294" width="62" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="J5Y-mc-exH"/>
-                                    <constraint firstAttribute="width" constant="62" id="g8p-fa-H2s"/>
+                                    <constraint firstAttribute="height" constant="21" id="o7V-OG-ltA"/>
+                                    <constraint firstAttribute="width" constant="62" id="pmh-BN-Uuj"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -72,27 +58,41 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="sjP-C4-kbx">
                                 <rect key="frame" x="148" y="72" width="305" height="70"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="305" id="MK9-Gl-a0e"/>
-                                    <constraint firstAttribute="width" secondItem="sjP-C4-kbx" secondAttribute="height" multiplier="61:14" id="ldl-2q-DSp"/>
-                                    <constraint firstAttribute="height" constant="70" id="pia-L0-8rb"/>
+                                    <constraint firstAttribute="width" secondItem="sjP-C4-kbx" secondAttribute="height" multiplier="61:14" id="Aac-3r-DRL"/>
+                                    <constraint firstAttribute="height" constant="70" id="KAA-Br-b1K"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="305" id="dzW-LQ-6EZ"/>
+                                    <constraint firstAttribute="width" constant="305" id="poF-ZQ-c4H"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwq-Qr-xMe">
+                                <rect key="frame" x="210" y="383" width="180" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="GdA-wb-bZg"/>
+                                </constraints>
+                                <state key="normal" image="findRestaurantsButton">
+                                    <color key="titleColor" red="0.93797536375661372" green="0.76735165424024465" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="getTablesButtonClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="wWo-Bw-Qkf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.19047619047619047" green="0.19047619047619047" blue="0.19047619047619047" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="rwq-Qr-xMe" firstAttribute="top" secondItem="l5Z-PF-5sD" secondAttribute="bottom" constant="29" id="1X1-O7-hKe"/>
-                            <constraint firstItem="sjP-C4-kbx" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="5k2-ZM-TW9"/>
-                            <constraint firstItem="l5Z-PF-5sD" firstAttribute="centerX" secondItem="5VF-ti-1I3" secondAttribute="centerX" id="84n-Gq-s1w"/>
-                            <constraint firstItem="l5Z-PF-5sD" firstAttribute="leading" secondItem="IF1-QI-gkC" secondAttribute="leading" id="H2K-Ce-hX7"/>
-                            <constraint firstItem="IF1-QI-gkC" firstAttribute="trailing" secondItem="l5Z-PF-5sD" secondAttribute="trailing" id="L8z-dS-2bs"/>
-                            <constraint firstItem="l5Z-PF-5sD" firstAttribute="top" secondItem="5VF-ti-1I3" secondAttribute="bottom" constant="8" symbolic="YES" id="T6P-mS-6Uo"/>
-                            <constraint firstItem="37s-B9-uat" firstAttribute="centerX" secondItem="IF1-QI-gkC" secondAttribute="centerX" id="WIX-GG-lsu"/>
-                            <constraint firstItem="37s-B9-uat" firstAttribute="centerX" secondItem="sjP-C4-kbx" secondAttribute="centerX" id="ilZ-ni-LTw"/>
-                            <constraint firstItem="5VF-ti-1I3" firstAttribute="top" secondItem="IF1-QI-gkC" secondAttribute="bottom" constant="45" id="lNW-Yu-sNZ"/>
-                            <constraint firstItem="IF1-QI-gkC" firstAttribute="top" secondItem="37s-B9-uat" secondAttribute="bottom" constant="8" symbolic="YES" id="ncH-OE-E0w"/>
-                            <constraint firstItem="37s-B9-uat" firstAttribute="top" secondItem="sjP-C4-kbx" secondAttribute="bottom" constant="48" id="qTR-3s-31j"/>
-                            <constraint firstItem="l5Z-PF-5sD" firstAttribute="centerX" secondItem="rwq-Qr-xMe" secondAttribute="centerX" id="tVX-cl-L5p"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="rwq-Qr-xMe" secondAttribute="bottom" constant="168" id="uS1-Lx-oRJ"/>
+                            <constraint firstItem="l5Z-PF-5sD" firstAttribute="top" secondItem="5VF-ti-1I3" secondAttribute="bottom" constant="8" symbolic="YES" id="36j-7h-3IL"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="rwq-Qr-xMe" secondAttribute="bottom" constant="157" id="5dl-Ld-T31"/>
+                            <constraint firstItem="IF1-QI-gkC" firstAttribute="centerX" secondItem="37s-B9-uat" secondAttribute="centerX" id="6uU-v0-ECb"/>
+                            <constraint firstItem="5VF-ti-1I3" firstAttribute="top" secondItem="IF1-QI-gkC" secondAttribute="bottom" constant="45" id="GDC-cY-LEi"/>
+                            <constraint firstItem="5VF-ti-1I3" firstAttribute="centerX" secondItem="l5Z-PF-5sD" secondAttribute="centerX" id="HqT-bR-8ut"/>
+                            <constraint firstItem="IF1-QI-gkC" firstAttribute="trailing" secondItem="l5Z-PF-5sD" secondAttribute="trailing" id="ISE-4k-fir"/>
+                            <constraint firstItem="37s-B9-uat" firstAttribute="top" secondItem="sjP-C4-kbx" secondAttribute="bottom" constant="48" id="K5S-aH-nEL"/>
+                            <constraint firstItem="rwq-Qr-xMe" firstAttribute="top" secondItem="l5Z-PF-5sD" secondAttribute="bottom" constant="30" id="PbN-dr-8FV"/>
+                            <constraint firstItem="rwq-Qr-xMe" firstAttribute="centerX" secondItem="l5Z-PF-5sD" secondAttribute="centerX" id="Spi-6U-ep3"/>
+                            <constraint firstItem="IF1-QI-gkC" firstAttribute="top" secondItem="37s-B9-uat" secondAttribute="bottom" constant="8" symbolic="YES" id="Z8G-kS-lsZ"/>
+                            <constraint firstItem="37s-B9-uat" firstAttribute="centerX" secondItem="sjP-C4-kbx" secondAttribute="centerX" id="ax9-9S-G4o"/>
+                            <constraint firstItem="IF1-QI-gkC" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="igP-eW-A1f"/>
+                            <constraint firstItem="IF1-QI-gkC" firstAttribute="leading" secondItem="l5Z-PF-5sD" secondAttribute="leading" id="kgZ-hD-A0w"/>
                         </constraints>
                     </view>
                     <connections>
@@ -342,6 +342,7 @@
     </scenes>
     <resources>
         <image name="defaultPhoto" width="540" height="540"/>
+        <image name="findRestaurantsButton" width="180" height="60"/>
         <image name="logo" width="800" height="200"/>
     </resources>
 </document>

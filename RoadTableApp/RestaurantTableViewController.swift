@@ -18,7 +18,7 @@ class RestaurantTableViewController: UITableViewController, UISearchBarDelegate,
    
     var searchActive : Bool = false
     var restaurantsCollection = [Restaurant]()
-    var restaurantsList = [Restaurant]()
+//    var restaurantsList = [Restaurant]()
     
     
     var service:RestaurantService!
@@ -29,6 +29,7 @@ class RestaurantTableViewController: UITableViewController, UISearchBarDelegate,
         restaurantSearchBar.delegate = self
         SwiftSpinner.show("Pondering the meaning of life...", animated: true)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "routeToGoogleMaps:", name: "routeToPressed", object: nil)
+        
         
         // Load restaurants or show error page if data is invalid
         service = RestaurantService()
@@ -46,6 +47,8 @@ class RestaurantTableViewController: UITableViewController, UISearchBarDelegate,
                 SwiftSpinner.hide()
             }
         }
+
+        
     }
     
     // Delay action
@@ -57,7 +60,6 @@ class RestaurantTableViewController: UITableViewController, UISearchBarDelegate,
     //MARK Actions
     @IBAction func restaurantTableViewCellSwiped(sender: UISwipeGestureRecognizer) {
     }
-    
     
     func searchBarTextDidBeginEditing(restaurantSearchBar: UISearchBar) {
         searchActive = true;
@@ -195,6 +197,13 @@ class RestaurantTableViewController: UITableViewController, UISearchBarDelegate,
             println(notification.region)
             println(currentRestaurant.center)
             
+            // Create alert message for restaurant
+            let alertController = UIAlertController(title: "Restaurant added to Stops!", message:
+                "\(currentRestaurant.name) was added to your upcoming stops. We'll remind you when you get close.", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+            self.presentViewController(alertController, animated: true, completion: nil)
+            
+            // Reload table data
             self.tableView.reloadData()
         }
         

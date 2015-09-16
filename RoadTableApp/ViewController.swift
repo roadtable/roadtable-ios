@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import CoreLocation
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, CLLocationManagerDelegate {
     // Mark: Properties
     @IBOutlet weak var startTextField: UITextField!
     @IBOutlet weak var endTextField: UITextField!
@@ -18,20 +18,39 @@ class ViewController: UIViewController {
     
     var service:RestaurantService!
     let shareData = ShareData.sharedInstance
+    let locManager = CLLocationManager()
+    var locationString:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         SwiftSpinner.hide()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if self.locManager.location != nil {
+            var lat = self.locManager.location.coordinate.latitude
+            var long = self.locManager.location.coordinate.longitude
+            self.locationString = "\(lat),\(long)"
+        }
+        
+    }
+    
     // Mark: Actions
     @IBAction func getTablesButtonClicked(sender: UIButton) {
         service = RestaurantService()
         self.shareData.apiKey = NSUUID().UUIDString
-        service.createSession(startTextField.text, destination: endTextField.text)
         
+        if self.locManager.location == nil {
+            service.createSession(startTextField.text, destination: endTextField.text)
+        } else {
+            if startTextField.text.lowercaseString == "current location" {
+                service.createSession(locationString, destination: endTextField.text)
+            } else {
+                service.createSession(startTextField.text, destination: endTextField.text)
+            }
+        }
         performSegueWithIdentifier("nextView", sender: self)
-
     }
 
     override func didReceiveMemoryWarning() {

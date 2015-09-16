@@ -222,7 +222,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="restaurantSearchBar" destination="6xE-rQ-69G" id="0ej-hF-v5b"/>
-                        <outlet property="stopButtonLabel" destination="Wsd-Y5-Z7I" id="h0O-Av-an8"/>
                         <segue destination="vXZ-lx-hvc" kind="show" identifier="previousView" id="7nM-zW-5TD"/>
                     </connections>
                 </tableViewController>

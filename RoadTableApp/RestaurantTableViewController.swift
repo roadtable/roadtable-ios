@@ -15,11 +15,10 @@ class RestaurantTableViewController: UITableViewController, UISearchBarDelegate,
     @IBOutlet weak var loadingLabel: UILabel!
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var restaurantSearchBar: UISearchBar!
-    @IBOutlet weak var stopButtonLabel: UIBarButtonItem!
    
     var searchActive : Bool = false
     var restaurantsCollection = [Restaurant]()
-    var restaurantsList = [Restaurant]()
+//    var restaurantsList = [Restaurant]()
     
     
     var service:RestaurantService!
@@ -30,6 +29,7 @@ class RestaurantTableViewController: UITableViewController, UISearchBarDelegate,
         restaurantSearchBar.delegate = self
         SwiftSpinner.show("Pondering the meaning of life...", animated: true)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "routeToGoogleMaps:", name: "routeToPressed", object: nil)
+        
         
         // Load restaurants or show error page if data is invalid
         service = RestaurantService()
@@ -47,6 +47,8 @@ class RestaurantTableViewController: UITableViewController, UISearchBarDelegate,
                 SwiftSpinner.hide()
             }
         }
+
+        
     }
     
     // Delay action
@@ -58,7 +60,6 @@ class RestaurantTableViewController: UITableViewController, UISearchBarDelegate,
     //MARK Actions
     @IBAction func restaurantTableViewCellSwiped(sender: UISwipeGestureRecognizer) {
     }
-    
     
     func searchBarTextDidBeginEditing(restaurantSearchBar: UISearchBar) {
         searchActive = true;
@@ -201,9 +202,6 @@ class RestaurantTableViewController: UITableViewController, UISearchBarDelegate,
                 "\(currentRestaurant.name) was added to your upcoming stops. We'll remind you when you get close.", preferredStyle: UIAlertControllerStyle.Alert)
             alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
             self.presentViewController(alertController, animated: true, completion: nil)
-            
-            // Update stopButtonLabel text
-//            self.navigationItem.rightBarButtonItem! = UIBarButtonItem(title: "Stops(\(ListTableViewController.restaurantsList.count))", style: UIBarButtonItemStyle(), target: self, action: "addAction", rawValue: nil)
             
             // Reload table data
             self.tableView.reloadData()

@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="  Copyright (c) 2015 The Iron Yard. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8ie-xW-0ye">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright (c) 2015 The Iron Yard. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8ie-xW-0ye" userLabel="Copyright (c) 2015 The Iron Yard. All rights reserved.">
                     <rect key="frame" x="20" y="420" width="441" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="Ege-ly-LAU"/>
@@ -20,8 +20,8 @@
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="XMN-t5-w2Q">
-                    <rect key="frame" x="88" y="126" width="305" height="70"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="XMN-t5-w2Q">
+                    <rect key="frame" x="88" y="140" width="305" height="70"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="XMN-t5-w2Q" secondAttribute="height" multiplier="61:14" id="3Bq-Rt-dFG"/>
                         <constraint firstAttribute="width" constant="305" id="Dr7-GN-wJ4"/>
@@ -31,10 +31,12 @@
             </subviews>
             <color key="backgroundColor" red="0.19413700810185186" green="0.19413700810185186" blue="0.19413700810185186" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="8ie-xW-0ye" secondAttribute="trailing" constant="19" id="78u-pO-1Vi"/>
+                <constraint firstItem="XMN-t5-w2Q" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="35" id="7Xe-tQ-vqk"/>
                 <constraint firstAttribute="bottom" secondItem="8ie-xW-0ye" secondAttribute="bottom" constant="39" id="ANn-U3-vtr"/>
-                <constraint firstItem="XMN-t5-w2Q" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="126" id="Dxs-4L-1ef"/>
-                <constraint firstItem="XMN-t5-w2Q" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="88" id="u0X-N4-mgA"/>
-                <constraint firstAttribute="trailing" secondItem="XMN-t5-w2Q" secondAttribute="trailing" constant="87" id="wgQ-VS-yt2"/>
+                <constraint firstItem="XMN-t5-w2Q" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="137" id="WvV-XQ-DIM"/>
+                <constraint firstAttribute="trailing" secondItem="XMN-t5-w2Q" secondAttribute="trailing" constant="35" id="bn4-K0-zuy"/>
+                <constraint firstItem="8ie-xW-0ye" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="txM-yR-f74"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
